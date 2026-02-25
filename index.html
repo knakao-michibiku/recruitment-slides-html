@@ -3,797 +3,2414 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>採用説明会資料 - TechNova株式会社 | Speaker Deck</title>
+  <title>採用説明会資料 - TechNova株式会社</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg-dark: #1a1a2e;
-      --bg-darker: #0f0f1a;
-      --bg-card: #252540;
-      --text-white: #ffffff;
-      --text-gray: #a0a0b0;
-      --text-muted: #6b6b80;
-      --accent-green: #00d68f;
-      --accent-blue: #4da6ff;
-      --border-color: #3a3a50;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg-dark);
-      color: var(--text-white);
-      min-height: 100vh;
-    }
-
-    /* Header */
-    .header {
-      background: var(--bg-darker);
-      border-bottom: 1px solid var(--border-color);
-      padding: 12px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      color: var(--text-white);
-      font-weight: 600;
-      font-size: 18px;
-    }
-
-    .logo svg {
-      width: 32px;
-      height: 32px;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .header-btn {
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .btn-outline {
-      border: 1px solid var(--border-color);
-      color: var(--text-white);
-      background: transparent;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--accent-green);
-      color: var(--accent-green);
-    }
-
-    .btn-primary {
-      background: var(--accent-green);
-      color: var(--bg-darker);
-      border: none;
-    }
-
-    .btn-primary:hover {
-      opacity: 0.9;
-    }
-
-    /* Main Content */
-    .main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 32px 24px;
-    }
-
-    /* Deck Header */
-    .deck-header {
-      margin-bottom: 24px;
-    }
-
-    .deck-title {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 16px;
-      line-height: 1.3;
-    }
-
-    .deck-meta {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-
-    .deck-author {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .author-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #E67E22, #F39C12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 16px;
-    }
-
-    .author-info {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .author-name {
-      font-weight: 600;
-      font-size: 14px;
-    }
-
-    .author-handle {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .deck-stats {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      color: var(--text-gray);
-      font-size: 14px;
-    }
-
-    .stat-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    /* Slide Viewer */
-    .slide-viewer {
-      background: var(--bg-darker);
-      border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 24px;
-      border: 1px solid var(--border-color);
-    }
-
-    .slide-container {
-      position: relative;
-      aspect-ratio: 16 / 9;
-      background: #000;
-    }
-
-    .slide-image {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-
-    .slide-nav-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 48px;
-      height: 48px;
-      background: rgba(0, 0, 0, 0.6);
-      border: none;
-      border-radius: 50%;
-      color: white;
-      font-size: 24px;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .slide-nav-btn:hover {
-      background: rgba(0, 0, 0, 0.8);
-    }
-
-    .slide-nav-btn.prev {
-      left: 16px;
-    }
-
-    .slide-nav-btn.next {
-      right: 16px;
-    }
-
-    .slide-nav-btn:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-    }
-
-    /* Slide Controls */
-    .slide-controls {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 16px;
-      background: var(--bg-card);
-      border-top: 1px solid var(--border-color);
-    }
-
-    .slide-counter {
-      font-size: 14px;
-      color: var(--text-gray);
-      font-weight: 500;
-    }
-
-    .slide-counter span {
-      color: var(--text-white);
-    }
-
-    .control-buttons {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .control-btn {
-      width: 36px;
-      height: 36px;
-      background: transparent;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      color: var(--text-gray);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-    }
-
-    .control-btn:hover {
-      border-color: var(--text-gray);
-      color: var(--text-white);
-    }
-
-    .control-btn svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    /* Progress Bar */
-    .progress-bar {
-      height: 3px;
-      background: var(--border-color);
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: var(--accent-green);
-      transition: width 0.3s ease;
-    }
-
-    /* Thumbnail Strip */
-    .thumbnail-strip {
-      display: flex;
-      gap: 8px;
-      padding: 16px;
-      overflow-x: auto;
-      background: var(--bg-card);
-      border-top: 1px solid var(--border-color);
-    }
-
-    .thumbnail-strip::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    .thumbnail-strip::-webkit-scrollbar-track {
-      background: var(--bg-darker);
-    }
-
-    .thumbnail-strip::-webkit-scrollbar-thumb {
-      background: var(--border-color);
-      border-radius: 3px;
-    }
-
-    .thumbnail {
-      flex-shrink: 0;
-      width: 120px;
-      aspect-ratio: 16 / 9;
-      border-radius: 6px;
-      overflow: hidden;
-      cursor: pointer;
-      border: 2px solid transparent;
-      opacity: 0.6;
-      transition: all 0.2s;
-    }
-
-    .thumbnail:hover {
-      opacity: 0.9;
-    }
-
-    .thumbnail.active {
-      border-color: var(--accent-green);
-      opacity: 1;
-    }
-
-    .thumbnail img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* Deck Info */
-    .deck-info {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 32px;
-      margin-top: 32px;
-    }
-
-    .deck-description {
-      background: var(--bg-card);
-      border-radius: 12px;
-      padding: 24px;
-      border: 1px solid var(--border-color);
-    }
-
-    .deck-description h2 {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
-    .deck-description p {
-      color: var(--text-gray);
-      line-height: 1.7;
-      font-size: 14px;
-    }
-
-    .deck-details {
-      background: var(--bg-card);
-      border-radius: 12px;
-      padding: 24px;
-      border: 1px solid var(--border-color);
-    }
-
-    .deck-details h2 {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
-    .detail-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border-color);
-      font-size: 14px;
-    }
-
-    .detail-item:last-child {
-      border-bottom: none;
-    }
-
-    .detail-label {
-      color: var(--text-muted);
-    }
-
-    .detail-value {
-      color: var(--text-white);
-      font-weight: 500;
-    }
-
-    /* Action Buttons */
-    .action-buttons {
-      display: flex;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .action-btn {
-      flex: 1;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      text-align: center;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .action-btn.primary {
-      background: var(--accent-green);
-      color: var(--bg-darker);
-      border: none;
-    }
-
-    .action-btn.primary:hover {
-      opacity: 0.9;
-    }
-
-    .action-btn.secondary {
-      background: transparent;
-      color: var(--text-white);
-      border: 1px solid var(--border-color);
-    }
-
-    .action-btn.secondary:hover {
-      border-color: var(--text-gray);
-    }
-
-    /* Fullscreen Mode */
-    .fullscreen .header,
-    .fullscreen .deck-header,
-    .fullscreen .deck-info,
-    .fullscreen .thumbnail-strip {
-      display: none;
-    }
-
-    .fullscreen .main {
-      padding: 0;
-      max-width: 100%;
-      height: 100vh;
-    }
-
-    .fullscreen .slide-viewer {
-      border-radius: 0;
-      border: none;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .fullscreen .slide-container {
-      height: calc(100vh - 52px);
-    }
-
-    /* Keyboard hint */
-    .keyboard-hint {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.8);
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 12px;
-      color: var(--text-gray);
-      opacity: 0;
-      transition: opacity 0.3s;
-      pointer-events: none;
-    }
-
-    .keyboard-hint.show {
-      opacity: 1;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .deck-info {
-        grid-template-columns: 1fr;
-      }
-
-      .deck-meta {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-      }
-
-      .slide-nav-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-      }
-
-      .thumbnail {
-        width: 80px;
-      }
-    }
+
+:root {
+  --primary: #E67E22;
+  --primary-dark: #D35400;
+  --primary-light: #F39C12;
+  --primary-pale: rgba(230, 126, 34, 0.08);
+  --text-dark: #1a1a1a;
+  --text-main: #333333;
+  --text-light: #666666;
+  --text-muted: #999999;
+  --bg-white: #FFFFFF;
+  --bg-cream: #FFFAF5;
+  --bg-gray: #F8F8F8;
+  --line-light: #E8E8E8;
+
+  --font-main: 'Noto Sans JP', sans-serif;
+  --font-accent: 'Montserrat', sans-serif;
+
+  --slide-width: 1280px;
+  --slide-height: 720px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+  color: var(--text-main);
+  line-height: 1.7;
+}
+
+.slides-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  gap: 40px;
+}
+
+.slide {
+  width: var(--slide-width);
+  height: var(--slide-height);
+  background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-cream) 100%);
+  box-shadow: 0 25px 80px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 背景パターン */
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 80px,
+      rgba(230, 126, 34, 0.02) 80px,
+      rgba(230, 126, 34, 0.02) 81px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.slide.bg-grid::before {
+  background:
+    linear-gradient(90deg, var(--line-light) 1px, transparent 1px),
+    linear-gradient(0deg, var(--line-light) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.4;
+}
+
+.slide.bg-corner::after {
+  content: '';
+  position: absolute;
+  top: -150px;
+  right: -150px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--primary-pale) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 写真フレーム */
+.photo-frame-bold {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 480px;
+  height: 380px;
+  background: var(--primary);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 12% 100%, 0 80%);
+  padding: 18px;
+  z-index: 2;
+}
+
+.photo-frame-bold .photo-inner {
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 13% 100%, 0 79%);
+  overflow: hidden;
+  background: var(--bg-gray);
+}
+
+.photo-frame-bold img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-frame-circle {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  border: 50px solid var(--primary);
+  overflow: hidden;
+  background: var(--bg-gray);
+  z-index: 2;
+}
+
+.photo-frame-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-frame-offset {
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 420px;
+  height: 320px;
+  z-index: 2;
+}
+
+.photo-frame-offset::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: -20px;
+  width: 100%;
+  height: 100%;
+  background: var(--primary);
+  border-radius: 16px;
+  z-index: -1;
+}
+
+.photo-frame-offset .photo-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--bg-gray);
+}
+
+.photo-frame-offset img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-collage {
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 440px;
+  height: 360px;
+  z-index: 2;
+}
+
+.photo-collage-item {
+  position: absolute;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-gray);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.photo-collage-item.main {
+  width: 280px;
+  height: 200px;
+  top: 0;
+  right: 0;
+  border: 6px solid var(--primary);
+}
+
+.photo-collage-item.sub1 {
+  width: 180px;
+  height: 130px;
+  bottom: 30px;
+  left: 0;
+  border: 5px solid var(--primary);
+}
+
+.photo-collage-item.sub2 {
+  width: 150px;
+  height: 110px;
+  bottom: 0;
+  right: 50px;
+  border: 4px solid var(--primary-light);
+}
+
+.photo-collage-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-fullbleed {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 1;
+}
+
+.photo-fullbleed::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80px;
+  width: 80px;
+  height: 100%;
+  background: var(--primary);
+  clip-path: polygon(100% 0, 100% 100%, 0 85%, 0 15%);
+  z-index: 2;
+}
+
+.photo-fullbleed::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+  z-index: 1;
+}
+
+.photo-fullbleed img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* アクセントバー */
+.accent-bar {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 200px;
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+  z-index: 3;
+}
+
+.accent-bar.tall {
+  height: 380px;
+}
+
+/* コンテンツエリア */
+.content-area {
+  position: absolute;
+  left: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 520px;
+  z-index: 4;
+}
+
+.content-area.wide {
+  width: 1100px;
+  left: 80px;
+}
+
+.content-area.center {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* タイポグラフィ */
+.section-label {
+  font-family: var(--font-accent);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  color: var(--primary);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.main-title {
+  font-size: 46px;
+  font-weight: 900;
+  color: var(--text-dark);
+  line-height: 1.3;
+  margin-bottom: 14px;
+}
+
+.main-title.large {
+  font-size: 54px;
+}
+
+.main-title.hero {
+  font-size: 72px;
+  letter-spacing: -2px;
+}
+
+.main-title .accent {
+  color: var(--primary);
+}
+
+.sub-title {
+  font-family: var(--font-accent);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--text-light);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.body-text {
+  font-size: 17px;
+  color: var(--text-main);
+  line-height: 1.9;
+}
+
+.lead-text {
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--text-dark);
+  line-height: 1.8;
+}
+
+.highlight-box {
+  background: var(--primary-pale);
+  border-left: 6px solid var(--primary);
+  padding: 24px 28px;
+  margin: 24px 0;
+  font-size: 17px;
+  line-height: 1.8;
+  border-radius: 0 12px 12px 0;
+}
+
+/* データ表示 */
+.data-showcase {
+  display: flex;
+  gap: 50px;
+  margin-top: 40px;
+}
+
+.data-item {
+  text-align: center;
+}
+
+.data-item .number {
+  font-family: var(--font-accent);
+  font-size: 80px;
+  font-weight: 900;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.data-item .number.huge {
+  font-size: 90px;
+}
+
+.data-item .number .unit {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.data-item .label {
+  font-size: 16px;
+  color: var(--text-light);
+  margin-top: 10px;
+}
+
+/* チャート */
+.donut-chart {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(230, 126, 34, 0.2);
+}
+
+.donut-chart::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110px;
+  height: 110px;
+  background: var(--bg-white);
+  border-radius: 50%;
+}
+
+.donut-chart .center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 1;
+}
+
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 30px;
+  height: 300px;
+  padding: 50px 0;
+}
+
+.bar {
+  flex: 1;
+  background: linear-gradient(180deg, rgba(230, 126, 34, 0.4) 0%, rgba(211, 84, 0, 0.5) 100%);
+  border-radius: 12px 12px 0 0;
+  position: relative;
+  min-width: 80px;
+  
+}
+
+.bar.highlight-bar {
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
+  box-shadow: 0 -8px 40px rgba(230, 126, 34, 0.5);
+}
+
+.bar .value {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-accent);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-muted);
+}
+
+.bar.highlight-bar .value {
+  font-size: 32px;
+  color: var(--primary);
+}
+
+.bar .bar-label {
+  position: absolute;
+  bottom: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.bar.highlight-bar .bar-label {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.bar .growth-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  color: var(--primary);
+  font-family: var(--font-accent);
+  font-size: 14px;
+  font-weight: 800;
+  padding: 6px 12px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+/* カード */
+.card-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.card-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.card-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.card-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+.card {
+  background: var(--bg-white);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.05);
+  border: 1px solid var(--line-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: var(--primary);
+}
+
+.card.top-accent::before {
+  width: 100%;
+  height: 5px;
+}
+
+.card.no-accent::before {
+  display: none;
+}
+
+.card h3 {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 15px;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+.card .card-number {
+  font-family: var(--font-accent);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--primary);
+  opacity: 0.1;
+  position: absolute;
+  top: 10px;
+  right: 14px;
+}
+
+.card .card-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+/* リスト */
+.feature-list {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.feature-list li {
+  padding: 14px 0;
+  padding-left: 28px;
+  position: relative;
+  font-size: 17px;
+  border-bottom: 1px solid var(--line-light);
+}
+
+.feature-list li:last-child {
+  border-bottom: none;
+}
+
+.feature-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+/* タイムライン */
+.timeline {
+  position: relative;
+  padding-left: 36px;
+  margin-top: 24px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 5px;
+  bottom: 5px;
+  width: 3px;
+  background: linear-gradient(180deg, var(--primary) 0%, var(--primary-light) 100%);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -36px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  background: var(--primary);
+  border-radius: 50%;
+  border: 3px solid var(--bg-white);
+  box-shadow: 0 0 0 3px var(--primary);
+}
+
+.timeline-item .year {
+  font-family: var(--font-accent);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+.timeline-item .event {
+  font-size: 16px;
+  color: var(--text-main);
+}
+
+/* フロー */
+.flow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.flow-item {
+  flex: 1;
+  text-align: center;
+  padding: 20px 10px;
+  background: var(--bg-gray);
+  border-radius: 12px;
+  border: 2px solid transparent;
+}
+
+.flow-item .step {
+  font-family: var(--font-accent);
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.flow-item h4 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.flow-item p {
+  font-size: 13px;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.flow-item.highlight {
+  background: var(--primary);
+  color: white;
+}
+
+.flow-item.highlight .step,
+.flow-item.highlight h4 {
+  color: white;
+}
+
+.flow-item.highlight p {
+  color: rgba(255,255,255,0.85);
+}
+
+.flow-arrow {
+  font-size: 20px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* インタビュー */
+.interview {
+  display: flex;
+  gap: 32px;
+  margin-top: 24px;
+  align-items: flex-start;
+}
+
+.interview-photo {
+  width: 200px;
+  height: 250px;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.interview-photo::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: -12px;
+  width: 100%;
+  height: 100%;
+  background: var(--primary);
+  border-radius: 16px;
+  z-index: -1;
+}
+
+.interview-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.interview-content {
+  flex: 1;
+}
+
+.interview-content .name {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.interview-content .position {
+  font-family: var(--font-accent);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.interview-content .quote {
+  font-size: 17px;
+  color: var(--text-main);
+  line-height: 1.9;
+  padding-left: 24px;
+  border-left: 5px solid var(--primary);
+}
+
+/* Q&A */
+.qa-list {
+  margin-top: 24px;
+}
+
+.qa-item {
+  margin-bottom: 24px;
+}
+
+.qa-item:last-child {
+  margin-bottom: 0;
+}
+
+.qa-item .question {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.qa-item .question .icon {
+  width: 32px;
+  height: 32px;
+  background: var(--primary);
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-accent);
+  font-weight: 800;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.qa-item .question p {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+  padding-top: 4px;
+}
+
+.qa-item .answer {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-left: 46px;
+}
+
+.qa-item .answer .icon {
+  width: 32px;
+  height: 32px;
+  background: var(--bg-gray);
+  color: var(--primary);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-accent);
+  font-weight: 800;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.qa-item .answer p {
+  font-size: 16px;
+  color: var(--text-main);
+  line-height: 1.8;
+  padding-top: 4px;
+}
+
+/* 表紙 */
+.cover-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-cream) 100%);
+}
+
+.cover-slide::before {
+  display: none;
+}
+
+.cover-content {
+  text-align: center;
+  z-index: 2;
+}
+
+.cover-logo {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 40px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-radius: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: var(--font-accent);
+  font-size: 70px;
+  font-weight: 900;
+  box-shadow: 0 20px 60px rgba(230, 126, 34, 0.3);
+}
+
+.cover-title {
+  font-size: 68px;
+  font-weight: 900;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+}
+
+.cover-subtitle {
+  font-family: var(--font-accent);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-light);
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  margin-bottom: 48px;
+}
+
+.cover-company {
+  font-size: 22px;
+  color: var(--text-muted);
+}
+
+.cover-decoration,
+.slide-decoration {
+  position: absolute;
+  border: 70px solid var(--primary);
+  border-radius: 50%;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cover-decoration.large,
+.slide-decoration.large {
+  width: 600px;
+  height: 600px;
+  top: -250px;
+  right: -200px;
+}
+
+.cover-decoration.small,
+.slide-decoration.small {
+  width: 400px;
+  height: 400px;
+  bottom: -180px;
+  left: -150px;
+}
+
+/* エンディング */
+.ending-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+}
+
+.ending-slide::before {
+  display: none;
+}
+
+.ending-content {
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+
+.ending-title {
+  font-family: var(--font-accent);
+  font-size: 96px;
+  font-weight: 900;
+  margin-bottom: 24px;
+}
+
+.ending-message {
+  font-size: 28px;
+  opacity: 0.95;
+  margin-bottom: 48px;
+}
+
+.ending-contact {
+  font-size: 18px;
+  opacity: 0.8;
+  line-height: 1.8;
+}
+
+/* セクションディバイダー */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+}
+
+.section-divider::before {
+  display: none;
+}
+
+.section-divider .section-number {
+  font-family: var(--font-accent);
+  font-size: 180px;
+  font-weight: 900;
+  color: white;
+  opacity: 0.1;
+  position: absolute;
+  right: 80px;
+  bottom: 40px;
+}
+
+.section-divider .section-content {
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+
+.section-divider .section-content h2 {
+  font-size: 60px;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.section-divider .section-content p {
+  font-family: var(--font-accent);
+  font-size: 20px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* 表形式 */
+.info-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.info-table tr {
+  border-bottom: 1px solid var(--line-light);
+}
+
+.info-table th {
+  text-align: left;
+  padding: 14px 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--primary);
+  width: 130px;
+}
+
+.info-table td {
+  padding: 14px 0;
+  font-size: 16px;
+  color: var(--text-main);
+}
+
+/* クライアントロゴ */
+.client-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.client-logo {
+  width: 170px;
+  height: 80px;
+  background: var(--bg-gray);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+/* 2カラム */
+.two-col {
+  display: flex;
+  gap: 50px;
+}
+
+.two-col .col {
+  flex: 1;
+}
+
+/* stat-box */
+.stat-box {
+  background: var(--primary-pale);
+  padding: 36px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.stat-box.dark {
+  background: var(--primary);
+}
+
+.stat-box.dark .number,
+.stat-box.dark h3 {
+  color: white;
+}
+
+.stat-box.dark .label {
+  color: rgba(255,255,255,0.8);
+}
+
+/* ============================
+   アニメーション
+   ============================ */
+
+/* キーフレーム定義 */
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+  to {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+}
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+  50% {
+    box-shadow: 0 -15px 70px rgba(230, 126, 34, 0.6);
+  }
+}
+
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+  to {
+    width: 100%;
+  }
+}
+
+  50% {
+    opacity: 0;
+  }
+}
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* スライド内要素のアニメーション */
+
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateY(0);
+  }
+}
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.card:hover::before {
+  background: var(--primary-dark);
+}
+
+.flow-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: 0 10px 30px rgba(230, 126, 34, 0.15);
+}
+
+.client-logo:hover {
+  background: var(--primary-pale);
+  color: var(--primary);
+  transform: scale(1.05);
+}
+
+.feature-list li:hover {
+  padding-left: 36px;
+  color: var(--primary);
+}
+
+.photo-frame-bold:hover {
+  transform: translateY(-50%) scale(1.02);
+  box-shadow: 0 20px 60px rgba(230, 126, 34, 0.25);
+}
+
+.photo-frame-offset:hover {
+  transform: translateY(-50%) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+.photo-frame-circle:hover {
+  transform: translateY(-50%) scale(1.03);
+  box-shadow: 0 20px 60px rgba(230, 126, 34, 0.3);
+}
+
+.photo-collage:hover {
+  transform: translateY(-50%) scale(1.02);
+}
+
+.photo-collage-item:hover {
+  transform: scale(1.08);
+  z-index: 10;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* 表紙・エンディングアニメーション */
+
+  60% {
+    transform: scale(1.1) rotate(10deg);
+  }
+  80% {
+    transform: scale(0.95) rotate(-5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* ドーナツチャートアニメーション */
+
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.donut-chart:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 50px rgba(230, 126, 34, 0.25);
+}
+
+/* アクセントバーアニメーション */
+
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+/* シマーエフェクト（ローディング風） */
+.shimmer-effect {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  
+}
+
+/* グラデーション背景アニメーション */
+.animated-gradient {
+  background: linear-gradient(-45deg, var(--primary), var(--primary-dark), var(--primary-light), var(--primary));
+  background-size: 400% 400%;
+  
+}
+
+.stat-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(230, 126, 34, 0.2);
+}
+
+.highlight-box:hover {
+  transform: translateX(10px);
+  border-left-width: 10px;
+}
+
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="header">
-    <a href="#" class="logo">
-      <svg viewBox="0 0 32 32" fill="none">
-        <rect width="32" height="32" rx="6" fill="#00d68f"/>
-        <path d="M8 10h16v2H8zM8 15h12v2H8zM8 20h14v2H8z" fill="#1a1a2e"/>
-      </svg>
-      Speaker Deck
-    </a>
-    <div class="header-actions">
-      <a href="#" class="header-btn btn-outline">Sign in</a>
-      <a href="#" class="header-btn btn-primary">Sign up</a>
+<div class="slides-container">
+
+  <!-- 01: 表紙 -->
+  <div class="slide cover-slide">
+    <div class="cover-decoration large"></div>
+    <div class="cover-decoration small"></div>
+    <div class="cover-content">
+      <div class="cover-logo">T</div>
+      <h1 class="cover-title">採用説明会資料</h1>
+      <p class="cover-subtitle">Recruitment Presentation 2025</p>
+      <p class="cover-company">TechNova株式会社</p>
     </div>
-  </header>
-
-  <!-- Main -->
-  <main class="main">
-
-    <!-- Deck Header -->
-    <div class="deck-header">
-      <h1 class="deck-title">採用説明会資料 - TechNova株式会社</h1>
-      <div class="deck-meta">
-        <div class="deck-author">
-          <div class="author-avatar">T</div>
-          <div class="author-info">
-            <span class="author-name">TechNova株式会社</span>
-            <span class="author-handle">@technova_hr</span>
-          </div>
-        </div>
-        <div class="deck-stats">
-          <div class="stat-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-              <circle cx="12" cy="12" r="3"/>
-            </svg>
-            <span>2,456 views</span>
-          </div>
-          <div class="stat-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-            </svg>
-            <span>128 likes</span>
-          </div>
-          <div class="stat-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-              <line x1="16" y1="2" x2="16" y2="6"/>
-              <line x1="8" y1="2" x2="8" y2="6"/>
-              <line x1="3" y1="10" x2="21" y2="10"/>
-            </svg>
-            <span>February 25, 2025</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Slide Viewer -->
-    <div class="slide-viewer">
-      <div class="progress-bar">
-        <div class="progress-fill" id="progressFill"></div>
-      </div>
-      <div class="slide-container">
-        <img id="currentSlide" class="slide-image" src="slide_images/slide_01.png" alt="Slide 1">
-        <button class="slide-nav-btn prev" id="prevBtn" onclick="prevSlide()">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="15 18 9 12 15 6"/>
-          </svg>
-        </button>
-        <button class="slide-nav-btn next" id="nextBtn" onclick="nextSlide()">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="9 18 15 12 9 6"/>
-          </svg>
-        </button>
-      </div>
-      <div class="slide-controls">
-        <div class="slide-counter">
-          <span id="currentNum">1</span> / <span id="totalNum">38</span>
-        </div>
-        <div class="control-buttons">
-          <button class="control-btn" onclick="toggleFullscreen()" title="Fullscreen">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-            </svg>
-          </button>
-          <button class="control-btn" onclick="downloadSlide()" title="Download">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-          </button>
-          <button class="control-btn" onclick="shareSlide()" title="Share">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="18" cy="5" r="3"/>
-              <circle cx="6" cy="12" r="3"/>
-              <circle cx="18" cy="19" r="3"/>
-              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-      <div class="thumbnail-strip" id="thumbnailStrip">
-        <!-- Thumbnails will be generated by JS -->
-      </div>
-    </div>
-
-    <!-- Deck Info -->
-    <div class="deck-info">
-      <div class="deck-description">
-        <h2>Description</h2>
-        <p>TechNova株式会社の採用説明会資料です。会社紹介、事業内容、働く環境、キャリアパス、待遇・福利厚生、募集職種について詳しく説明しています。</p>
-        <p style="margin-top: 12px;">クラウドソリューション・AIプラットフォーム・DXコンサルティングを主軸とするテクノロジー企業として、2015年の設立以来急成長を続けています。現在従業員380名、さらなる事業拡大に向けて積極採用中です。</p>
-        <div class="action-buttons">
-          <a href="#" class="action-btn primary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-              <polyline points="7 10 12 15 17 10"/>
-              <line x1="12" y1="15" x2="12" y2="3"/>
-            </svg>
-            Download PDF
-          </a>
-          <a href="#" class="action-btn secondary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-            </svg>
-            Copy Link
-          </a>
-        </div>
-      </div>
-      <div class="deck-details">
-        <h2>Details</h2>
-        <div class="detail-item">
-          <span class="detail-label">Slides</span>
-          <span class="detail-value">38</span>
-        </div>
-        <div class="detail-item">
-          <span class="detail-label">Category</span>
-          <span class="detail-value">Business</span>
-        </div>
-        <div class="detail-item">
-          <span class="detail-label">Published</span>
-          <span class="detail-value">Feb 25, 2025</span>
-        </div>
-        <div class="detail-item">
-          <span class="detail-label">License</span>
-          <span class="detail-value">All Rights Reserved</span>
-        </div>
-      </div>
-    </div>
-
-  </main>
-
-  <div class="keyboard-hint" id="keyboardHint">
-    Use ← → arrow keys to navigate
   </div>
 
-  <script>
-    // Slide data
-    const totalSlides = 38;
-    let currentSlide = 1;
+  <!-- 02: アジェンダ -->
+  <div class="slide bg-corner">
+    <div class="accent-bar tall"></div>
+    <div class="content-area wide">
+      <p class="section-label">Agenda</p>
+      <h2 class="main-title large">本日の内容</h2>
+      <p class="sub-title">Contents Overview</p>
 
-    // Generate slide image paths
-    function getSlideImage(num) {
-      return `slide_images/slide_${String(num).padStart(2, '0')}.png`;
-    }
+      <div class="card-grid cols-3" style="margin-top: 40px;">
+        <div class="card top-accent">
+          <span class="card-number">01</span>
+          <h3>会社紹介</h3>
+          <p>TechNovaの概要とミッション</p>
+        </div>
+        <div class="card top-accent">
+          <span class="card-number">02</span>
+          <h3>事業紹介</h3>
+          <p>主力サービスと市場ポジション</p>
+        </div>
+        <div class="card top-accent">
+          <span class="card-number">03</span>
+          <h3>働く環境</h3>
+          <p>オフィスとチーム体制</p>
+        </div>
+        <div class="card top-accent">
+          <span class="card-number">04</span>
+          <h3>キャリア・成長</h3>
+          <p>評価制度とキャリアパス</p>
+        </div>
+        <div class="card top-accent">
+          <span class="card-number">05</span>
+          <h3>待遇・福利厚生</h3>
+          <p>給与体系と各種制度</p>
+        </div>
+        <div class="card top-accent">
+          <span class="card-number">06</span>
+          <h3>募集・選考</h3>
+          <p>募集職種と選考プロセス</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    // Generate thumbnails
-    function generateThumbnails() {
-      const strip = document.getElementById('thumbnailStrip');
-      strip.innerHTML = '';
+  <!-- 03: 会社紹介セクション -->
+  <div class="slide section-divider">
+    <span class="section-number">01</span>
+    <div class="section-content">
+      <h2>会社紹介</h2>
+      <p>About Us</p>
+    </div>
+  </div>
 
-      for (let i = 1; i <= totalSlides; i++) {
-        const thumb = document.createElement('div');
-        thumb.className = `thumbnail ${i === currentSlide ? 'active' : ''}`;
-        thumb.innerHTML = `<img src="${getSlideImage(i)}" alt="Slide ${i}">`;
-        thumb.onclick = () => goToSlide(i);
-        strip.appendChild(thumb);
-      }
-    }
+  <!-- 04: 会社概要 -->
+  <div class="slide bg-grid">
+    <div class="accent-bar"></div>
+    <div class="content-area">
+      <p class="section-label">Company</p>
+      <h2 class="main-title large">会社概要</h2>
+      <p class="sub-title">About TechNova</p>
 
-    // Update slide display
-    function updateSlide() {
-      document.getElementById('currentSlide').src = getSlideImage(currentSlide);
-      document.getElementById('currentNum').textContent = currentSlide;
-      document.getElementById('prevBtn').disabled = currentSlide === 1;
-      document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+      <table class="info-table">
+        <tr><th>会社名</th><td>TechNova株式会社</td></tr>
+        <tr><th>設立</th><td>2015年4月</td></tr>
+        <tr><th>資本金</th><td>5億円</td></tr>
+        <tr><th>従業員数</th><td>380名（2024年12月現在）</td></tr>
+        <tr><th>本社</th><td>東京都渋谷区道玄坂1-1-1</td></tr>
+        <tr><th>代表者</th><td>代表取締役CEO 山田 太郎</td></tr>
+        <tr><th>事業内容</th><td>クラウド / AI / DXコンサルティング</td></tr>
+      </table>
+    </div>
+    <div class="photo-frame-bold">
+      <div class="photo-inner">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800" alt="オフィス">
+      </div>
+    </div>
+  </div>
 
-      // Update progress bar
-      const progress = (currentSlide / totalSlides) * 100;
-      document.getElementById('progressFill').style.width = `${progress}%`;
+  <!-- 05: ミッション -->
+  <div class="slide">
+    <div class="photo-fullbleed">
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200" alt="チーム">
+    </div>
+    <div class="content-area" style="width: 480px;">
+      <p class="section-label">Mission</p>
+      <h2 class="main-title hero">
+        テクノロジーで<br>
+        <span class="accent">未来</span>を創る
+      </h2>
+      <p class="body-text" style="margin-top: 28px;">
+        最先端のテクノロジーを活用し、<br>
+        人々の生活をより豊かにするサービスを<br>
+        世界中に届けることを使命としています。
+      </p>
+    </div>
+  </div>
 
-      // Update thumbnails
-      document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
-        thumb.classList.toggle('active', index + 1 === currentSlide);
-      });
+  <!-- 06: ビジョン -->
+  <div class="slide">
+    <div class="accent-bar tall"></div>
+    <div class="content-area">
+      <p class="section-label">Vision</p>
+      <h2 class="main-title large">2030年ビジョン</h2>
+      <p class="sub-title">Our Vision</p>
 
-      // Scroll thumbnail into view
-      const activeThumb = document.querySelector('.thumbnail.active');
-      if (activeThumb) {
-        activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-      }
-    }
+      <p class="lead-text">
+        アジアNo.1の<br>
+        <span class="accent" style="font-weight: 700;">テクノロジーカンパニー</span>へ
+      </p>
 
-    function prevSlide() {
-      if (currentSlide > 1) {
-        currentSlide--;
-        updateSlide();
-      }
-    }
+      <div class="highlight-box" style="margin-top: 28px;">
+        2030年までに売上1,000億円、従業員2,000名規模の組織へ成長し、アジア全域でサービスを展開することを目指しています。
+      </div>
+    </div>
+    <div class="photo-frame-circle">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800" alt="グローバル">
+    </div>
+  </div>
 
-    function nextSlide() {
-      if (currentSlide < totalSlides) {
-        currentSlide++;
-        updateSlide();
-      }
-    }
+  <!-- 07: バリュー -->
+  <div class="slide">
+    <div class="accent-bar tall"></div>
+    <div class="content-area wide">
+      <p class="section-label">Values</p>
+      <h2 class="main-title large">私たちの価値観</h2>
+      <p class="sub-title">Core Values</p>
 
-    function goToSlide(num) {
-      currentSlide = num;
-      updateSlide();
-    }
+      <div class="card-grid cols-3" style="margin-top: 40px;">
+        <div class="card" style="text-align: center; padding: 48px 24px;">
+          <div class="card-icon" style="font-size: 48px;">🚀</div>
+          <h3 style="font-size: 24px; margin-bottom: 16px;">Innovation First</h3>
+          <p style="font-size: 16px;">常に新しい価値を追求し、変化を恐れずチャレンジし続けます</p>
+        </div>
+        <div class="card" style="text-align: center; padding: 48px 24px;">
+          <div class="card-icon" style="font-size: 48px;">🤝</div>
+          <h3 style="font-size: 24px; margin-bottom: 16px;">Team Excellence</h3>
+          <p style="font-size: 16px;">多様な個性を尊重し、チームの力で最高の成果を生み出します</p>
+        </div>
+        <div class="card" style="text-align: center; padding: 48px 24px;">
+          <div class="card-icon" style="font-size: 48px;">💡</div>
+          <h3 style="font-size: 24px; margin-bottom: 16px;">User Centric</h3>
+          <p style="font-size: 16px;">ユーザーの声に真摯に向き合い、本当に必要なものを届けます</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    function toggleFullscreen() {
-      document.body.classList.toggle('fullscreen');
-      if (document.body.classList.contains('fullscreen')) {
-        document.documentElement.requestFullscreen?.();
-      } else {
-        document.exitFullscreen?.();
-      }
-    }
+  <!-- 08: 沿革 -->
+  <div class="slide">
+    <div class="accent-bar tall"></div>
+    <div class="content-area">
+      <p class="section-label">History</p>
+      <h2 class="main-title large">沿革</h2>
+      <p class="sub-title">Company History</p>
 
-    function downloadSlide() {
-      const link = document.createElement('a');
-      link.href = getSlideImage(currentSlide);
-      link.download = `TechNova_Slide_${currentSlide}.png`;
-      link.click();
-    }
+      <div class="timeline">
+        <div class="timeline-item">
+          <p class="year">2015</p>
+          <p class="event">渋谷にて創業。クラウドサービス事業を開始</p>
+        </div>
+        <div class="timeline-item">
+          <p class="year">2017</p>
+          <p class="event">シリーズAで10億円調達。従業員50名突破</p>
+        </div>
+        <div class="timeline-item">
+          <p class="year">2019</p>
+          <p class="event">海外展開開始。シンガポール支社設立</p>
+        </div>
+        <div class="timeline-item">
+          <p class="year">2021</p>
+          <p class="event">東証グロース市場上場</p>
+        </div>
+        <div class="timeline-item">
+          <p class="year">2024</p>
+          <p class="event">従業員380名。AI事業部新設</p>
+        </div>
+      </div>
+    </div>
+    <div class="photo-frame-offset">
+      <div class="photo-inner">
+        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800" alt="プレゼン">
+      </div>
+    </div>
+  </div>
 
-    function shareSlide() {
-      navigator.clipboard.writeText(window.location.href);
-      alert('Link copied to clipboard!');
-    }
+  <!-- 09: 数字で見る -->
+  <div class="slide bg-corner">
+    <!-- 装飾用の大きな数字背景 -->
+    <div style="position: absolute; top: -50px; right: -30px; font-family: var(--font-accent); font-size: 350px; font-weight: 900; color: var(--primary); opacity: 0.04; z-index: 0; line-height: 1;">№</div>
 
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') {
-        prevSlide();
-      } else if (e.key === 'ArrowRight') {
-        nextSlide();
-      } else if (e.key === 'Escape' && document.body.classList.contains('fullscreen')) {
-        toggleFullscreen();
-      } else if (e.key === 'f') {
-        toggleFullscreen();
-      }
-    });
+    <div class="content-area wide" style="z-index: 2;">
+      <p class="section-label">Data</p>
+      <h2 class="main-title large">数字で見るTechNova</h2>
+      <p class="sub-title">Facts & Figures</p>
 
-    // Show keyboard hint on first load
-    setTimeout(() => {
-      const hint = document.getElementById('keyboardHint');
-      hint.classList.add('show');
-      setTimeout(() => hint.classList.remove('show'), 3000);
-    }, 1000);
+      <!-- メインデータ（大きいカード） -->
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px;">
+        <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 20px; padding: 36px 24px; text-align: center; color: white; box-shadow: 0 15px 40px rgba(230, 126, 34, 0.3);">
+          <div style="width: 60px; height: 60px; background: rgba(255,255,255,0.2); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 28px;">👥</div>
+          <p class="number huge" style="color: white; font-size: 64px;">380<span class="unit" style="font-size: 24px;">名</span></p>
+          <p style="font-size: 15px; opacity: 0.9; margin-top: 8px;">従業員数</p>
+        </div>
+        <div style="background: var(--bg-white); border-radius: 20px; padding: 36px 24px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 2px solid var(--line-light);">
+          <div style="width: 60px; height: 60px; background: var(--primary-pale); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 28px;">⭐</div>
+          <p class="number huge" style="font-size: 64px;">98<span class="unit" style="font-size: 24px;">%</span></p>
+          <p style="font-size: 15px; color: var(--text-light); margin-top: 8px;">顧客満足度</p>
+        </div>
+        <div style="background: var(--bg-white); border-radius: 20px; padding: 36px 24px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 2px solid var(--line-light);">
+          <div style="width: 60px; height: 60px; background: var(--primary-pale); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 28px;">📈</div>
+          <p class="number huge" style="font-size: 64px;">150<span class="unit" style="font-size: 24px;">億</span></p>
+          <p style="font-size: 15px; color: var(--text-light); margin-top: 8px;">年間売上高</p>
+        </div>
+        <div style="background: var(--bg-white); border-radius: 20px; padding: 36px 24px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 2px solid var(--line-light);">
+          <div style="width: 60px; height: 60px; background: var(--primary-pale); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 28px;">🎯</div>
+          <p class="number huge" style="font-size: 64px;">28<span class="unit" style="font-size: 24px;">歳</span></p>
+          <p style="font-size: 15px; color: var(--text-light); margin-top: 8px;">平均年齢</p>
+        </div>
+      </div>
 
-    // Click on slide to advance
-    document.querySelector('.slide-container').addEventListener('click', (e) => {
-      if (e.target.classList.contains('slide-image')) {
-        const rect = e.target.getBoundingClientRect();
-        const clickX = e.clientX - rect.left;
-        if (clickX < rect.width / 2) {
-          prevSlide();
-        } else {
-          nextSlide();
-        }
-      }
-    });
+      <!-- サブデータ（小さいバッジ） -->
+      <div style="display: flex; justify-content: center; gap: 40px; margin-top: 36px;">
+        <div style="display: flex; align-items: center; gap: 12px; background: var(--bg-gray); padding: 14px 28px; border-radius: 50px;">
+          <span style="font-family: var(--font-accent); font-size: 28px; font-weight: 800; color: var(--primary);">12</span>
+          <span style="font-size: 14px; color: var(--text-light);">カ国の多様なメンバー</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; background: var(--bg-gray); padding: 14px 28px; border-radius: 50px;">
+          <span style="font-family: var(--font-accent); font-size: 28px; font-weight: 800; color: var(--primary);">35%</span>
+          <span style="font-size: 14px; color: var(--text-light);">女性比率</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; background: var(--bg-gray); padding: 14px 28px; border-radius: 50px;">
+          <span style="font-family: var(--font-accent); font-size: 28px; font-weight: 800; color: var(--primary);">500+</span>
+          <span style="font-size: 14px; color: var(--text-light);">導入企業数</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    // Initialize
-    generateThumbnails();
-    updateSlide();
-    document.getElementById('totalNum').textContent = totalSlides;
-  </script>
+  <!-- 10: 事業紹介セクション -->
+  <div class="slide section-divider">
+    <span class="section-number">02</span>
+    <div class="section-content">
+      <h2>事業紹介</h2>
+      <p>Our Business</p>
+    </div>
+  </div>
+
+  <!-- 11: 事業概要 -->
+  <div class="slide">
+    <div class="accent-bar tall"></div>
+    <div class="content-area">
+      <p class="section-label">Business</p>
+      <h2 class="main-title large">事業紹介</h2>
+      <p class="sub-title">Our Services</p>
+
+      <p class="lead-text" style="margin-top: 16px;">
+        TechNovaは3つの主力事業で<br>
+        企業のデジタル変革を支援
+      </p>
+
+      <ul class="feature-list">
+        <li><strong>クラウドソリューション</strong><br>AWS/GCP基盤の設計・構築・運用</li>
+        <li><strong>AIプラットフォーム</strong><br>機械学習を活用した業務効率化</li>
+        <li><strong>DXコンサルティング</strong><br>業務プロセスのデジタル化支援</li>
+      </ul>
+    </div>
+    <div class="photo-frame-circle">
+      <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800" alt="開発">
+    </div>
+  </div>
+
+  <!-- 12: 売上構成 -->
+  <div class="slide bg-grid">
+    <div class="accent-bar"></div>
+    <div class="content-area">
+      <p class="section-label">Revenue</p>
+      <h2 class="main-title large">売上構成</h2>
+      <p class="sub-title">Revenue Breakdown</p>
+
+      <div style="display: flex; align-items: center; gap: 50px; margin-top: 48px;">
+        <div class="donut-chart" style="background: conic-gradient(var(--primary) 0deg 180deg, var(--primary-light) 180deg 270deg, #ddd 270deg 360deg);">
+          <div class="center-text">
+            <p style="font-family: var(--font-accent); font-size: 30px; font-weight: 900; color: var(--primary);">150億</p>
+            <p style="font-size: 13px; color: var(--text-light);">年間売上</p>
+          </div>
+        </div>
+        <div>
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 18px;">
+            <div style="width: 22px; height: 22px; background: var(--primary); border-radius: 5px;"></div>
+            <span style="font-size: 17px; font-weight: 600;">クラウドソリューション 50%</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 18px;">
+            <div style="width: 22px; height: 22px; background: var(--primary-light); border-radius: 5px;"></div>
+            <span style="font-size: 17px; font-weight: 600;">AIプラットフォーム 25%</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <div style="width: 22px; height: 22px; background: #ddd; border-radius: 5px;"></div>
+            <span style="font-size: 17px; font-weight: 600;">DXコンサルティング 25%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="photo-frame-offset">
+      <div class="photo-inner">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800" alt="データ">
+      </div>
+    </div>
+  </div>
+
+  <!-- 13: 成長推移 -->
+  <div class="slide">
+    <div class="accent-bar"></div>
+    <div class="content-area wide">
+      <p class="section-label">Growth</p>
+      <h2 class="main-title large">売上高の推移</h2>
+      <p class="sub-title">Revenue Growth</p>
+
+      <div class="animated-bar-chart" style="display: flex; align-items: flex-end; gap: 12px; margin-top: 30px;">
+        <div class="bar-item" style="text-align: center; flex: 1; ">
+          <p style="font-family: var(--font-accent); font-size: 20px; font-weight: 700; color: var(--text-muted); margin-bottom: 10px;">30億</p>
+          <div class="bar-grow" style="height: 80px; background: linear-gradient(180deg, rgba(230, 126, 34, 0.3) 0%, rgba(211, 84, 0, 0.4) 100%); border-radius: 10px 10px 0 0;  transform-origin: bottom;"></div>
+          <p style="font-size: 15px; color: var(--text-light); margin-top: 12px;">2020</p>
+        </div>
+        <div class="bar-item" style="text-align: center; flex: 1; ">
+          <p style="font-family: var(--font-accent); font-size: 22px; font-weight: 700; color: var(--text-muted); margin-bottom: 10px;">50億</p>
+          <div class="bar-grow" style="height: 130px; background: linear-gradient(180deg, rgba(230, 126, 34, 0.4) 0%, rgba(211, 84, 0, 0.5) 100%); border-radius: 10px 10px 0 0;  transform-origin: bottom;"></div>
+          <p style="font-size: 15px; color: var(--text-light); margin-top: 12px;">2021</p>
+        </div>
+        <div class="bar-item" style="text-align: center; flex: 1; ">
+          <p style="font-family: var(--font-accent); font-size: 24px; font-weight: 700; color: var(--text-muted); margin-bottom: 10px;">80億</p>
+          <div class="bar-grow" style="height: 180px; background: linear-gradient(180deg, rgba(230, 126, 34, 0.5) 0%, rgba(211, 84, 0, 0.6) 100%); border-radius: 10px 10px 0 0;  transform-origin: bottom;"></div>
+          <p style="font-size: 15px; color: var(--text-light); margin-top: 12px;">2022</p>
+        </div>
+        <div class="bar-item" style="text-align: center; flex: 1; ">
+          <p style="font-family: var(--font-accent); font-size: 26px; font-weight: 700; color: var(--text-light); margin-bottom: 10px;">120億</p>
+          <div class="bar-grow" style="height: 250px; background: linear-gradient(180deg, rgba(230, 126, 34, 0.7) 0%, rgba(211, 84, 0, 0.8) 100%); border-radius: 10px 10px 0 0;  transform-origin: bottom;"></div>
+          <p style="font-size: 15px; color: var(--text-light); margin-top: 12px;">2023</p>
+        </div>
+        <div class="bar-item highlight-bar-item" style="text-align: center; flex: 1.3; ">
+          <p style="font-family: var(--font-accent); font-size: 36px; font-weight: 900; color: var(--primary); margin-bottom: 10px; ">150億</p>
+          <div class="bar-grow" style="height: 320px; background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 12px 12px 0 0; box-shadow: 0 -10px 50px rgba(230, 126, 34, 0.4); position: relative;  transform-origin: bottom;">
+            <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; color: var(--primary); font-family: var(--font-accent); font-size: 18px; font-weight: 900; padding: 10px 20px; border-radius: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); ">5倍成長</span>
+          </div>
+          <p style="font-size: 18px; font-weight: 700; color: var(--primary); margin-top: 12px;">2024</p>
+        </div>
+      </div>
+
+      <p style="text-align: center; margin-top: 30px; font-size: 18px; color: var(--text-main); font-weight: 500;">
+        <span style="color: var(--primary); font-weight: 700;">4年間で売上5倍</span>を達成。急成長を続けています。
+      </p>
+    </div>
+  </div>
+
+  <!-- 14: 導入実績 -->
+  <div class="slide">
+    <div class="accent-bar tall"></div>
+    <div class="content-area wide">
+      <p class="section-label">Clients</p>
+      <h2 class="main-title large">導入実績</h2>
+      <p class="sub-title">Our Clients</p>
+
+      <div class="client-logos">
+        <div class="client-logo">大手銀行A社</div>
+        <div class="client-logo">自動車メーカーB社</div>
+        <div class="client-logo">ECプラットフォームC社</div>
+        <div class="client-logo">通信キャリアD社</div>
+        <div class="client-logo">保険会社E社</div>
+        <div class="client-logo">小売チェーンF社</div>
+      </div>
+
+      <div class="data-showcase" style="margin-top: 40px;">
+        <div class="data-item">
+          <p class="number">500<span class="unit">+</span></p>
+          <p class="label">導入企業数</p>
+        </div>
+        <div class="data-item">
+          <p class="number">98<span class="unit">%</span></p>
+          <p class="label">継続率</p>
+        </div>
+        <div class="data-item">
+          <p class="number">4.8<span class="unit">/5</span></p>
+          <p class="label">顧客評価</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15: 働く環境セクション -->
+  <div class="slide section-divider">
+    <span class="section-number">03</span>
+    <div class="section-content">
+      <h2>働く環境</h2>
+      <p>Work Environment</p>
+    </div>
+  </div>
+
+  <!-- 16: オフィス環境 -->
+  <div class="slide">
+    <div class="accent-bar tall"></div>
+    <div class="content-area">
+      <p class="section-label">Office</p>
+      <h2 class="main-title large">オフィス環境</h2>
+      <p class="sub-title">Work Environment</p>
+
+      <p class="body-text" style="margin-top: 16px;">
+        渋谷駅直結の最新オフィスビルに本社を構え、<br>
+        集中作業もコラボレーションも<br>
+        自由に選べるワークスペースを完備。
+      </p>
+
+      <ul class="feature-list">
+        <li>フリーアドレス制</li>
+        <li>集中ブース・ミーティングスペース</li>
+        <li>カフェスペース（ドリンク無料）</li>
+        <li>リモートワーク可（週3日まで）</li>
+      </ul>
+    </div>
+    <div class="photo-collage">
+      <div class="photo-collage-item main">
+        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600" alt="オフィス">
+      </div>
+      <div class="photo-collage-item sub1">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400" alt="ミーティング">
+      </div>
+      <div class="photo-collage-item sub2">
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400" alt="カフェ">
+      </div>
+    </div>
+  </div>
+
+  <!-- 17: チーム構成 -->
+  <div class="slide bg-corner">
+    <div class="accent-bar"></div>
+    <div class="content-area wide">
+      <p class="section-label">Team</p>
+      <h2 class="main-title large">チーム構成</h2>
+      <p class="sub-title">Team Structure</p>
+
+      <div class="two-col" style="margin-top: 36px;">
+        <div class="col">
+          <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 24px; color: var(--primary);">職種別構成比</h3>
+          <div class="donut-chart" style="background: conic-gradient(var(--primary) 0deg 180deg, var(--primary-light) 180deg 252deg, #95a5a6 252deg 324deg, #ddd 324deg 360deg);">
+            <div class="center-text">
+              <p style="font-family: var(--font-accent); font-size: 30px; font-weight: 900; color: var(--primary);">380</p>
+              <p style="font-size: 13px; color: var(--text-light);">名</p>
+            </div>
+          </div>
+          <div style="margin-top: 24px;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+              <div style="width: 18px; height: 18px; background: var(--primary); border-radius: 4px;"></div>
+              <span style="font-size: 15px;">エンジニア 50%</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+              <div style="width: 18px; height: 18px; background: var(--primary-light); border-radius: 4px;"></div>
+              <span style="font-size: 15px;">セールス 20%</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+              <div style="width: 18px; height: 18px; background: #95a5a6; border-radius: 4px;"></div>
+              <span style="font-size: 15px;">コンサル 20%</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 18px; height: 18px; background: #ddd; border-radius: 4px;"></div>
+              <span style="font-size: 15px;">コーポレート 10%</span>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 24px; color: var(--primary);">メンバーデータ</h3>
+          <div class="data-showcase" style="flex-direction: column; gap: 32px; margin-top: 0;">
+            <div class="data-item" style="text-align: left;">
+              <p class="number" style="font-size: 60px;">28<span class="unit">歳</span></p>
+              <p class="label">平均年齢</p>
+            </div>
+            <div class="data-item" style="text-align: left;">
+              <p class="number" style="font-size: 60px;">35<span class="unit">%</span></p>
+              <p class="label">女性比率</p>
+            </div>
+            <div class="data-item" style="text-align: left;">
+              <p class="number" style="font-size: 60px;">12<span class="unit">カ国</span></p>
+              <p class="label">出身国籍</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 18: 1日のスケジュール -->
+  <div class="slide bg-grid">
+    <div class="accent-bar tall"></div>
+    <div class="content-area wide">
+      <p class="section-label">Schedule</p>
+      <h2 class="main-title large">1日のスケジュール例</h2>
+      <p class="sub-title">A Day in the Life</p>
+
+      <div class="two-col" style="margin-top: 32px; gap: 80px;">
+        <div class="col">
+          <div class="timeline">
+            <div class="timeline-item">
+              <p class="year">10:00</p>
+              <p class="event">出社・メールチェック</p>
+            </div>
+            <div class="timeline-item">
+              <p class="year">10:30</p>
+              <p class="event">チーム朝会（15分）</p>
+            </div>
+            <div class="timeline-item">
+              <p class="year">11:00</p>
+              <p class="event">開発作業・コードレビュー</p>
+            </div>
+            <div class="timeline-item">
+              <p class="year">12:30</p>
+              <p class="event">ランチ</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="timeline">
+            <div class="timeline-item">
+              <p class="year">14:00</p>
+              <p class="event">スプリントプランニング</p>
+            </div>
+            <div class="timeline-item">
+              <p class="year">15:30</p>
+              <p class="event">開発作業</p>
+            </div>
+            <div class="timeline-item">
+              <p class="year">17:00</p>
+              <p class="event">1on1ミーティング</p>
+            </div>
+            <div class="timeline-item">
+              <p class="year">19:00</p>
+              <p class="event">退社</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 19: 社員インタビュー1 -->
+  <div class="slide">
+    <div class="accent-bar tall"></div>
+    <div class="content-area wide">
+      <p class="section-label">Interview</p>
+      <h2 class="main-title large">社員インタビュー</h2>
+      <p class="sub-title">Employee Voice</p>
+
+      <div class="interview">
+        <div class="interview-photo">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="佐藤さん">
+        </div>
+        <div class="interview-content">
+          <p class="name">佐藤 健太</p>
+          <p class="position">Senior Engineer / 2020年入社</p>
+          <p class="quote">
+            「入社3年目でテックリードに昇格しました。上司や先輩が成長をサポートしてくれる環境があり、自分のペースでキャリアを築けています。新しい技術にチャレンジできる機会も多く、毎日が刺激的です。」
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 20: 社員インタビュー2 -->
+  <div class="slide bg-corner">
+    <div class="accent-bar tall"></div>
+    <div class="content-area wide">
+      <p class="section-label">Interview</p>
+      <h2 class="main-title large">社員インタビュー</h2>
+      <p class="sub-title">Employee Voice</p>
+
+      <div class="interview">
+        <div class="interview-photo">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400" alt="田中さん">
+        </div>
+        <div class="interview-content">
+          <p class="name">田中 美咲</p>
+          <p class="position">Product Manager / 2019年入社</p>
+          <p class="quote">
+            「エンジニアからPMにキャリアチェンジしました。社内異動制度が充実していて、やりたいことに挑戦しやすい環境です。育休から復帰後も時短勤務でフレキシブルに働けています。」
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 21: キャリア・成長セクション -->
+  <div class="slide section-divider">
+    <span class="section-number">04</span>
+    <div class="section-content">
+      <h2>キャリア・成長</h2>
+      <p>Career & Growth</p>
+    </div>
+  </div>
+
+  <!-- 22: キャリアパス -->
+  <div class="slide">
+    <div class="accent-bar"></div>
+    <div class="content-area wide">
+      <p class="section-label">Career</p>
+      <h2 class="main-title large">キャリアパス</h2>
+      <p class="sub-title">Career Path</p>
+
+      <div class="flow" style="margin-top: 48px;">
+        <div class="flow-item">
+          <p class="step">STEP 01</p>
+          <h4>メンバー</h4>
+          <p>基礎スキル習得<br>チームで成果を出す</p>
+        </div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-item">
+          <p class="step">STEP 02</p>
+          <h4>シニア</h4>
+          <p>専門性を深める<br>後輩の育成</p>
+        </div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-item">
+          <p class="step">STEP 03</p>
+          <h4>リード</h4>
+          <p>チームを牽引<br>技術的意思決定</p>
+        </div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-item highlight">
+          <p class="step">STEP 04</p>
+          <h4>マネージャー</h4>
+          <p>組織運営<br>戦略立案</p>
+        </div>
+      </div>
+
+      <p class="body-text" style="margin-top: 40px; text-align: center;">
+        マネジメントトラックとスペシャリストトラックの2つのキャリアパスを用意
+      </p>
+    </div>
+  </div>
+
+  <!-- 23: 評価制度 -->
+  <div class="slide">
+    <div class="accent-bar tall"></div>
+    <div class="content-area wide">
+      <p class="section-label">Evaluation</p>
+      <h2 class="main-title large">評価制度</h2>
+      <p class="sub-title">Performance Review</p>
+
+      <p class="body-text" style="margin-top: 16px;">
+        半期ごとの目標設定とフィードバック面談で、成長を可視化しながらキャリアを構築。
+      </p>
+
+      <div class="card-grid cols-2" style="margin-top: 28px;">
+        <div class="card">
+          <h3>360度フィードバック</h3>
+          <p>上司・同僚・部下から多面的な評価を受け、客観的に成長ポイントを把握</p>
+        </div>
+        <div class="card">
+          <h3>OKR制度</h3>
+          <p>会社・チーム・個人の目標を連動させ、インパクトのある成果にフォーカス</p>
+        </div>
+        <div class="card">
+          <h3>1on1ミーティング</h3>
+          <p>週1回のマネージャーとの対話で、課題や悩みを早期に解決</p>
+        </div>
+        <div class="card">
+          <h3>昇給・昇格</h3>
+          <p>年2回の評価に基づき、実力に見合った待遇へアップデート</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 24: 研修制度 -->
+  <div class="slide bg-grid">
+    <div class="accent-bar"></div>
+    <div class="content-area">
+      <p class="section-label">Training</p>
+      <h2 class="main-title large">研修制度</h2>
+      <p class="sub-title">Learning & Development</p>
+
+      <ul class="feature-list" style="margin-top: 28px;">
+        <li><strong>新卒研修（3ヶ月）</strong><br>ビジネス基礎＋技術研修</li>
+        <li><strong>OJT制度</strong><br>先輩社員がメンターとして伴走</li>
+        <li><strong>技術勉強会</strong><br>週1回の社内LT大会</li>
+        <li><strong>外部研修費用補助</strong><br>年間20万円まで会社負担</li>
+        <li><strong>資格取得支援</strong><br>取得費用＋報奨金</li>
+      </ul>
+    </div>
+    <div class="photo-frame-bold">
+      <div class="photo-inner">
+        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800" alt="研修">
+      </div>
+    </div>
+  </div>
+
+  <!-- 25: 待遇・福利厚生セクション -->
+  <div class="slide section-divider">
+    <span class="section-number">05</span>
+    <div class="section-content">
+      <h2>待遇・福利厚生</h2>
+      <p>Compensation & Benefits</p>
+    </div>
+  </div>
+
+  <!-- 26: 給与・報酬 -->
+  <div class="slide bg-corner">
+    <div class="accent-bar tall"></div>
+    <div class="content-area wide">
+      <p class="section-label">Salary</p>
+      <h2 class="main-title large">給与・報酬</h2>
+      <p class="sub-title">Compensation</p>
+
+      <div class="two-col" style="margin-top: 36px; gap: 40px;">
+        <div class="col">
+          <div class="stat-box">
+            <h3 style="font-size: 17px; font-weight: 700; margin-bottom: 16px; color: var(--primary);">新卒初任給</h3>
+            <div class="data-item">
+              <p class="number" style="font-size: 72px;">450<span class="unit">万円〜</span></p>
+              <p class="label">年収（大卒）</p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="stat-box dark">
+            <h3 style="font-size: 17px; font-weight: 700; margin-bottom: 16px;">中途採用</h3>
+            <div class="data-item">
+              <p class="number" style="font-size: 58px;">500-1200<span class="unit">万</span></p>
+              <p class="label">年収（経験による）</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-grid cols-3" style="margin-top: 32px;">
+        <div class="card no-accent" style="background: var(--bg-gray); text-align: center;">
+          <h3>賞与</h3>
+          <p>年2回（6月・12月）<br>業績連動型</p>
+        </div>
+        <div class="card no-accent" style="background: var(--bg-gray); text-align: center;">
+          <h3>昇給</h3>
+          <p>年2回<br>評価に基づき決定</p>
+        </div>
+        <div class="card no-accent" style="background: var(--bg-gray); text-align: center;">
+          <h3>SO</h3>
+          <p>ストックオプション<br>グレード別に付与</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 27: 福利厚生 -->
+  <div class="slide">
+    <div class="accent-bar"></div>
+    <div class="content-area wide">
+      <p class="section-label">Benefits</p>
+      <h2 class="main-title large">福利厚生</h2>
+      <p class="sub-title">Employee Benefits</p>
+
+      <div class="card-grid cols-4" style="margin-top: 32px;">
+        <div class="card top-accent" style="text-align: center; padding: 24px 18px;">
+          <div class="card-icon" style="font-size: 36px;">🏥</div>
+          <h3 style="font-size: 16px;">健康サポート</h3>
+          <p style="font-size: 13px;">人間ドック補助<br>メンタルケア</p>
+        </div>
+        <div class="card top-accent" style="text-align: center; padding: 24px 18px;">
+          <div class="card-icon" style="font-size: 36px;">🏠</div>
+          <h3 style="font-size: 16px;">住宅手当</h3>
+          <p style="font-size: 13px;">月3万円支給</p>
+        </div>
+        <div class="card top-accent" style="text-align: center; padding: 24px 18px;">
+          <div class="card-icon" style="font-size: 36px;">👶</div>
+          <h3 style="font-size: 16px;">育児支援</h3>
+          <p style="font-size: 13px;">育休推進<br>時短勤務</p>
+        </div>
+        <div class="card top-accent" style="text-align: center; padding: 24px 18px;">
+          <div class="card-icon" style="font-size: 36px;">🎉</div>
+          <h3 style="font-size: 16px;">社内イベント</h3>
+          <p style="font-size: 13px;">部活動支援</p>
+        </div>
+        <div class="card top-accent" style="text-align: center; padding: 24px 18px;">
+          <div class="card-icon" style="font-size: 36px;">💻</div>
+          <h3 style="font-size: 16px;">PC支給</h3>
+          <p style="font-size: 13px;">Mac/Win選択<br>モニター2台</p>
+        </div>
+        <div class="card top-accent" style="text-align: center; padding: 24px 18px;">
+          <div class="card-icon" style="font-size: 36px;">☕</div>
+          <h3 style="font-size: 16px;">ドリンク無料</h3>
+          <p style="font-size: 13px;">コーヒー・紅茶</p>
+        </div>
+        <div class="card top-accent" style="text-align: center; padding: 24px 18px;">
+          <div class="card-icon" style="font-size: 36px;">📚</div>
+          <h3 style="font-size: 16px;">書籍購入</h3>
+          <p style="font-size: 13px;">上限なし</p>
+        </div>
+        <div class="card top-accent" style="text-align: center; padding: 24px 18px;">
+          <div class="card-icon" style="font-size: 36px;">🚃</div>
+          <h3 style="font-size: 16px;">通勤手当</h3>
+          <p style="font-size: 13px;">全額支給</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 28: 休日・休暇 -->
+  <div class="slide bg-grid">
+    <div class="accent-bar tall"></div>
+    <div class="content-area">
+      <p class="section-label">Holiday</p>
+      <h2 class="main-title large">休日・休暇</h2>
+      <p class="sub-title">Days Off</p>
+
+      <div class="data-showcase" style="margin-top: 32px;">
+        <div class="data-item">
+          <p class="number">125<span class="unit">日</span></p>
+          <p class="label">年間休日</p>
+        </div>
+        <div class="data-item">
+          <p class="number">80<span class="unit">%</span></p>
+          <p class="label">有給消化率</p>
+        </div>
+      </div>
+
+      <ul class="feature-list" style="margin-top: 28px;">
+        <li>完全週休2日制（土日祝）</li>
+        <li>年末年始休暇（12/29〜1/3）</li>
+        <li>夏季休暇（5日間）</li>
+        <li>有給休暇（初年度10日）</li>
+        <li>リフレッシュ休暇（勤続5年で5日）</li>
+      </ul>
+    </div>
+    <div class="photo-frame-circle">
+      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800" alt="休暇">
+    </div>
+  </div>
+
+  <!-- 29: 募集・選考セクション -->
+  <div class="slide section-divider">
+    <span class="section-number">06</span>
+    <div class="section-content">
+      <h2>募集・選考</h2>
+      <p>Recruitment</p>
+    </div>
+  </div>
+
+  <!-- 30: 募集職種 -->
+  <div class="slide bg-corner">
+    <div class="accent-bar tall"></div>
+    <div class="content-area wide">
+      <p class="section-label">Positions</p>
+      <h2 class="main-title large">募集職種</h2>
+      <p class="sub-title">Open Positions</p>
+
+      <div class="card-grid cols-3" style="margin-top: 32px;">
+        <div class="card">
+          <span class="card-number">01</span>
+          <h3>バックエンドエンジニア</h3>
+          <p>Go / Python / AWS</p>
+        </div>
+        <div class="card">
+          <span class="card-number">02</span>
+          <h3>フロントエンドエンジニア</h3>
+          <p>React / TypeScript / Next.js</p>
+        </div>
+        <div class="card">
+          <span class="card-number">03</span>
+          <h3>MLエンジニア</h3>
+          <p>機械学習モデル開発・運用</p>
+        </div>
+        <div class="card">
+          <span class="card-number">04</span>
+          <h3>プロダクトマネージャー</h3>
+          <p>プロダクト企画・戦略立案</p>
+        </div>
+        <div class="card">
+          <span class="card-number">05</span>
+          <h3>セールス</h3>
+          <p>法人営業・CS</p>
+        </div>
+        <div class="card">
+          <span class="card-number">06</span>
+          <h3>コンサルタント</h3>
+          <p>DX戦略立案・導入支援</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 31: 求める人物像 -->
+  <div class="slide">
+    <div class="photo-fullbleed">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200" alt="チーム">
+    </div>
+    <div class="content-area" style="width: 480px;">
+      <p class="section-label">Ideal Candidate</p>
+      <h2 class="main-title large">求める人物像</h2>
+      <p class="sub-title">What We Look For</p>
+
+      <p class="lead-text" style="margin-top: 28px; line-height: 2;">
+        <span class="accent" style="font-weight: 700;">挑戦</span>を楽しめる人<br>
+        <span class="accent" style="font-weight: 700;">成長</span>にこだわる人<br>
+        <span class="accent" style="font-weight: 700;">チーム</span>で成果を出せる人
+      </p>
+    </div>
+  </div>
+
+  <!-- 32: 選考プロセス -->
+  <div class="slide">
+    <div class="accent-bar"></div>
+    <div class="content-area wide">
+      <p class="section-label">Process</p>
+      <h2 class="main-title large">選考プロセス</h2>
+      <p class="sub-title">Selection Process</p>
+
+      <div class="flow" style="margin-top: 48px;">
+        <div class="flow-item">
+          <p class="step">STEP 01</p>
+          <h4>書類選考</h4>
+          <p>履歴書<br>職務経歴書</p>
+        </div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-item">
+          <p class="step">STEP 02</p>
+          <h4>1次面接</h4>
+          <p>人事面談<br>オンライン可</p>
+        </div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-item">
+          <p class="step">STEP 03</p>
+          <h4>2次面接</h4>
+          <p>現場マネージャー<br>技術テスト</p>
+        </div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-item">
+          <p class="step">STEP 04</p>
+          <h4>最終面接</h4>
+          <p>役員面接</p>
+        </div>
+        <span class="flow-arrow">→</span>
+        <div class="flow-item highlight">
+          <p class="step">GOAL</p>
+          <h4>内定</h4>
+          <p>オファー面談</p>
+        </div>
+      </div>
+
+      <p class="body-text" style="margin-top: 40px; text-align: center;">
+        応募から内定まで約2〜4週間。すべての選考はオンラインでも実施可能です。
+      </p>
+    </div>
+  </div>
+
+  <!-- 33: Q&A -->
+  <div class="slide">
+    <div class="accent-bar tall"></div>
+    <div class="content-area wide">
+      <p class="section-label">FAQ</p>
+      <h2 class="main-title large">よくある質問</h2>
+      <p class="sub-title">Frequently Asked Questions</p>
+
+      <div class="qa-list" style="margin-top: 28px;">
+        <div class="qa-item">
+          <div class="question">
+            <span class="icon">Q</span>
+            <p>未経験でも応募できますか？</p>
+          </div>
+          <div class="answer">
+            <span class="icon">A</span>
+            <p>ポテンシャル採用枠をご用意しています。研修制度が充実しているため、意欲のある方であれば活躍可能です。</p>
+          </div>
+        </div>
+        <div class="qa-item">
+          <div class="question">
+            <span class="icon">Q</span>
+            <p>リモートワークは可能ですか？</p>
+          </div>
+          <div class="answer">
+            <span class="icon">A</span>
+            <p>週3日までリモートワーク可能です。チームの状況に応じて柔軟に調整できます。</p>
+          </div>
+        </div>
+        <div class="qa-item">
+          <div class="question">
+            <span class="icon">Q</span>
+            <p>副業は可能ですか？</p>
+          </div>
+          <div class="answer">
+            <span class="icon">A</span>
+            <p>事前申請制で副業を認めています。本業に支障がない範囲でスキルアップを推奨しています。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 34: お問い合わせ -->
+  <div class="slide bg-grid">
+    <div class="accent-bar tall"></div>
+    <div class="content-area">
+      <p class="section-label">Contact</p>
+      <h2 class="main-title large">お問い合わせ</h2>
+      <p class="sub-title">Contact Information</p>
+
+      <p class="body-text" style="margin-top: 24px;">
+        採用に関するご質問は<br>
+        お気軽にお問い合わせください。
+      </p>
+
+      <div style="background: var(--bg-gray); padding: 40px; border-radius: 20px; margin-top: 32px;">
+        <p style="font-size: 15px; color: var(--primary); font-weight: 700; margin-bottom: 10px;">採用担当</p>
+        <p style="font-size: 24px; font-weight: 700; color: var(--text-dark); margin-bottom: 20px;">人事部 採用チーム</p>
+        <p style="font-size: 18px; color: var(--text-main); margin-bottom: 12px;">
+          <strong>Email:</strong> recruit@technova.co.jp
+        </p>
+        <p style="font-size: 18px; color: var(--text-main);">
+          <strong>Tel:</strong> 03-1234-5678
+        </p>
+      </div>
+    </div>
+    <div class="photo-frame-offset">
+      <div class="photo-inner">
+        <img src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=800" alt="お問い合わせ">
+      </div>
+    </div>
+  </div>
+
+  <!-- 35: メッセージ -->
+  <div class="slide">
+    <div class="photo-fullbleed">
+      <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200" alt="チーム">
+    </div>
+    <div class="content-area" style="width: 480px;">
+      <p class="section-label">Message</p>
+      <h2 class="main-title large">最後に</h2>
+      <p class="sub-title">Closing Message</p>
+
+      <p class="lead-text" style="margin-top: 28px; line-height: 1.9;">
+        私たちと一緒に、<br>
+        <span class="accent" style="font-weight: 700;">未来を創りませんか？</span>
+      </p>
+
+      <p class="body-text" style="margin-top: 24px;">
+        TechNovaは、志を共にする仲間を求めています。<br>
+        皆さんとお会いできることを楽しみにしています。
+      </p>
+    </div>
+  </div>
+
+  <!-- 36: エンディング -->
+  <div class="slide ending-slide">
+    <div class="ending-content">
+      <h1 class="ending-title">Thank You</h1>
+      <p class="ending-message">ご清聴ありがとうございました</p>
+      <p class="ending-contact">
+        TechNova株式会社<br>
+        https://technova.co.jp
+      </p>
+    </div>
+  </div>
+
+</div>
 
 </body>
 </html>
