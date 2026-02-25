@@ -450,7 +450,7 @@ body {
   border-radius: 12px 12px 0 0;
   position: relative;
   min-width: 80px;
-  
+  transition: all 0.3s ease;
 }
 
 .bar.highlight-bar {
@@ -1090,52 +1090,92 @@ body {
    ============================ */
 
 /* キーフレーム定義 */
-
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
   to {
     opacity: 1;
     transform: scale(1);
   }
 }
 
+@keyframes slideInBar {
+  from {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
   to {
     transform: scaleY(1);
     transform-origin: bottom;
   }
 }
 
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
   50% {
     transform: scale(1.05);
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
   50% {
     transform: translateY(-10px);
   }
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
   100% {
     background-position: 200% 0;
   }
 }
 
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
   50% {
     background-position: 100% 50%;
   }
@@ -1144,28 +1184,51 @@ body {
   }
 }
 
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
   to {
     transform: rotate(360deg);
   }
 }
 
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+@keyframes barGrow {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
   to {
     transform: scaleY(1);
     opacity: 1;
   }
 }
 
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 -10px 50px rgba(230, 126, 34, 0.4);
+  }
   50% {
     box-shadow: 0 -15px 70px rgba(230, 126, 34, 0.6);
   }
 }
 
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
   50% {
     transform: scale(1.1);
   }
@@ -1175,34 +1238,62 @@ body {
   }
 }
 
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
   to {
     width: 100%;
   }
 }
 
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
   50% {
     opacity: 0;
   }
 }
 
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
   to {
     transform: translateY(0);
     opacity: 1;
   }
 }
 
+@keyframes fadeInRightPhoto {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(40px);
+  }
   to {
     opacity: 1;
     transform: translateY(-50%) translateX(0);
   }
 }
 
+@keyframes scaleInPhoto {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.9);
+  }
   to {
     opacity: 1;
     transform: translateY(-50%) scale(1);
   }
 }
 
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
   100% {
     transform: scale(4);
     opacity: 0;
@@ -1210,23 +1301,146 @@ body {
 }
 
 /* スライド内要素のアニメーション */
-
+@keyframes fadeInLeftContent {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-30px);
+  }
   to {
     opacity: 1;
     transform: translateY(-50%) translateX(0);
   }
 }
 
+@keyframes fadeInUpContent {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateY(20px);
+  }
   to {
     opacity: 1;
     transform: translateY(-50%) translateY(0);
   }
 }
 
+@keyframes fadeInCenterContent {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
   to {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
   }
+}
+
+.slide .content-area {
+  animation: fadeInLeftContent 0.8s ease-out forwards;
+}
+
+.slide .content-area.wide {
+  animation: fadeInUpContent 0.8s ease-out forwards;
+}
+
+.slide .content-area.center {
+  animation: fadeInCenterContent 0.8s ease-out forwards;
+}
+
+/* 写真フレームは個別にアニメーション設定（transform競合回避） */
+.slide .photo-fullbleed {
+  animation: fadeInRight 0.8s ease-out 0.2s forwards;
+}
+
+.slide .photo-frame-bold {
+  animation: fadeInRightPhoto 0.8s ease-out 0.3s both;
+}
+
+.slide .photo-frame-circle {
+  animation: scaleInPhoto 0.8s ease-out 0.3s both;
+}
+
+.slide .photo-frame-offset {
+  animation: fadeInRightPhoto 0.8s ease-out 0.3s both;
+}
+
+.slide .photo-collage {
+  animation: scaleInPhoto 0.8s ease-out 0.3s both;
+}
+
+.slide .section-label {
+  animation: fadeInUp 0.6s ease-out 0.1s both;
+}
+
+.slide .main-title {
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+.slide .sub-title {
+  animation: fadeInUp 0.6s ease-out 0.3s both;
+}
+
+/* カードのスタッガードアニメーション */
+.card-grid .card {
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+.card-grid .card:nth-child(1) { animation-delay: 0.1s; }
+.card-grid .card:nth-child(2) { animation-delay: 0.2s; }
+.card-grid .card:nth-child(3) { animation-delay: 0.3s; }
+.card-grid .card:nth-child(4) { animation-delay: 0.4s; }
+.card-grid .card:nth-child(5) { animation-delay: 0.5s; }
+.card-grid .card:nth-child(6) { animation-delay: 0.6s; }
+.card-grid .card:nth-child(7) { animation-delay: 0.7s; }
+.card-grid .card:nth-child(8) { animation-delay: 0.8s; }
+
+/* データアイテムのアニメーション */
+.data-showcase .data-item {
+  animation: scaleIn 0.6s ease-out both;
+}
+
+.data-showcase .data-item:nth-child(1) { animation-delay: 0.2s; }
+.data-showcase .data-item:nth-child(2) { animation-delay: 0.4s; }
+.data-showcase .data-item:nth-child(3) { animation-delay: 0.6s; }
+.data-showcase .data-item:nth-child(4) { animation-delay: 0.8s; }
+
+/* 数字のアニメーション */
+.data-item .number {
+  animation: countUp 0.8s ease-out both;
+}
+
+/* フローアイテムのアニメーション */
+.flow .flow-item {
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+.flow .flow-item:nth-child(1) { animation-delay: 0.1s; }
+.flow .flow-item:nth-child(2) { animation-delay: 0.2s; }
+.flow .flow-item:nth-child(3) { animation-delay: 0.3s; }
+.flow .flow-item:nth-child(4) { animation-delay: 0.4s; }
+.flow .flow-item:nth-child(5) { animation-delay: 0.5s; }
+.flow .flow-item:nth-child(6) { animation-delay: 0.6s; }
+.flow .flow-item:nth-child(7) { animation-delay: 0.7s; }
+.flow .flow-item:nth-child(8) { animation-delay: 0.8s; }
+.flow .flow-item:nth-child(9) { animation-delay: 0.9s; }
+
+.flow .flow-arrow {
+  animation: fadeInUp 0.3s ease-out both;
+}
+
+/* タイムラインアニメーション */
+.timeline-item {
+  animation: fadeInLeft 0.5s ease-out both;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-item:nth-child(3) { animation-delay: 0.3s; }
+.timeline-item:nth-child(4) { animation-delay: 0.4s; }
+.timeline-item:nth-child(5) { animation-delay: 0.5s; }
+
+/* ホバーエフェクト */
+.card {
+  transition: all 0.3s ease;
 }
 
 .card:hover {
@@ -1238,10 +1452,18 @@ body {
   background: var(--primary-dark);
 }
 
+.flow-item {
+  transition: all 0.3s ease;
+}
+
 .flow-item:hover {
   transform: translateY(-5px);
   border-color: var(--primary);
   box-shadow: 0 10px 30px rgba(230, 126, 34, 0.15);
+}
+
+.client-logo {
+  transition: all 0.3s ease;
 }
 
 .client-logo:hover {
@@ -1250,9 +1472,22 @@ body {
   transform: scale(1.05);
 }
 
+.feature-list li {
+  transition: all 0.3s ease;
+}
+
 .feature-list li:hover {
   padding-left: 36px;
   color: var(--primary);
+}
+
+/* 写真フレームホバー */
+.photo-frame-bold,
+.photo-frame-circle,
+.photo-frame-offset,
+.photo-collage,
+.photo-collage-item {
+  transition: all 0.4s ease;
 }
 
 .photo-frame-bold:hover {
@@ -1281,7 +1516,11 @@ body {
 }
 
 /* 表紙・エンディングアニメーション */
-
+@keyframes logoEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg);
+  }
   60% {
     transform: scale(1.1) rotate(10deg);
   }
@@ -1294,12 +1533,90 @@ body {
   }
 }
 
-/* ドーナツチャートアニメーション */
+.cover-slide .cover-logo {
+  animation: logoEntrance 1s ease-out 0.2s both, float 3s ease-in-out infinite 1.5s;
+}
 
+.cover-slide .cover-title {
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.cover-slide .cover-subtitle {
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.cover-slide .cover-company {
+  animation: fadeInUp 0.8s ease-out 0.8s both;
+}
+
+.cover-decoration,
+.slide-decoration {
+  animation: rotate 30s linear infinite;
+}
+
+.cover-decoration.small,
+.slide-decoration.small {
+  animation-direction: reverse;
+}
+
+.ending-slide .ending-title {
+  animation: scaleIn 0.8s ease-out 0.2s both;
+}
+
+.ending-slide .ending-message {
+  animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+.ending-slide .ending-contact {
+  animation: fadeInUp 0.8s ease-out 0.7s both;
+}
+
+/* セクションディバイダー */
+.section-divider .section-content h2 {
+  animation: scaleIn 0.6s ease-out 0.2s both;
+}
+
+.section-divider .section-content p {
+  animation: fadeInUp 0.6s ease-out 0.4s both;
+}
+
+.section-divider .section-number {
+  animation: fadeInRight 0.8s ease-out 0.3s both;
+}
+
+/* Q&Aアニメーション */
+.qa-item {
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+.qa-item:nth-child(1) { animation-delay: 0.1s; }
+.qa-item:nth-child(2) { animation-delay: 0.3s; }
+.qa-item:nth-child(3) { animation-delay: 0.5s; }
+
+/* インタビューセクション */
+.interview-photo {
+  animation: fadeInLeft 0.8s ease-out 0.3s both;
+}
+
+.interview-content {
+  animation: fadeInRight 0.8s ease-out 0.4s both;
+}
+
+/* ドーナツチャートアニメーション */
+@keyframes donutReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotate(-90deg);
+  }
   to {
     opacity: 1;
     transform: scale(1) rotate(0deg);
   }
+}
+
+.donut-chart {
+  animation: donutReveal 1s ease-out 0.4s both;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .donut-chart:hover {
@@ -1308,30 +1625,54 @@ body {
 }
 
 /* アクセントバーアニメーション */
-
+@keyframes fadeInLeftBar {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-20px);
+  }
   to {
     opacity: 1;
     transform: translateY(-50%) translateX(0);
   }
 }
 
+.accent-bar {
+  animation: fadeInLeftBar 0.5s ease-out both;
+}
+
+/* パルスアニメーション（強調用） */
+.highlight-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
 /* シマーエフェクト（ローディング風） */
 .shimmer-effect {
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
   background-size: 200% 100%;
-  
+  animation: shimmer 2s infinite;
 }
 
 /* グラデーション背景アニメーション */
 .animated-gradient {
   background: linear-gradient(-45deg, var(--primary), var(--primary-dark), var(--primary-light), var(--primary));
   background-size: 400% 400%;
-  
+  animation: gradientMove 8s ease infinite;
+}
+
+/* stat-boxホバー */
+.stat-box {
+  transition: all 0.3s ease;
 }
 
 .stat-box:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 40px rgba(230, 126, 34, 0.2);
+}
+
+/* ハイライトボックスアニメーション */
+.highlight-box {
+  animation: fadeInUp 0.6s ease-out 0.4s both;
+  transition: all 0.3s ease;
 }
 
 .highlight-box:hover {
@@ -1555,22 +1896,22 @@ body {
       <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px;">
         <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 20px; padding: 36px 24px; text-align: center; color: white; box-shadow: 0 15px 40px rgba(230, 126, 34, 0.3);">
           <div style="width: 60px; height: 60px; background: rgba(255,255,255,0.2); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 28px;">👥</div>
-          <p class="number huge" style="color: white; font-size: 64px;">380<span class="unit" style="font-size: 24px;">名</span></p>
+          <p class="number huge animate" style="color: white; font-size: 64px;">380<span class="unit" style="font-size: 24px;">名</span></p>
           <p style="font-size: 15px; opacity: 0.9; margin-top: 8px;">従業員数</p>
         </div>
         <div style="background: var(--bg-white); border-radius: 20px; padding: 36px 24px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 2px solid var(--line-light);">
           <div style="width: 60px; height: 60px; background: var(--primary-pale); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 28px;">⭐</div>
-          <p class="number huge" style="font-size: 64px;">98<span class="unit" style="font-size: 24px;">%</span></p>
+          <p class="number huge animate" style="font-size: 64px;">98<span class="unit" style="font-size: 24px;">%</span></p>
           <p style="font-size: 15px; color: var(--text-light); margin-top: 8px;">顧客満足度</p>
         </div>
         <div style="background: var(--bg-white); border-radius: 20px; padding: 36px 24px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 2px solid var(--line-light);">
           <div style="width: 60px; height: 60px; background: var(--primary-pale); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 28px;">📈</div>
-          <p class="number huge" style="font-size: 64px;">150<span class="unit" style="font-size: 24px;">億</span></p>
+          <p class="number huge animate" style="font-size: 64px;">150<span class="unit" style="font-size: 24px;">億</span></p>
           <p style="font-size: 15px; color: var(--text-light); margin-top: 8px;">年間売上高</p>
         </div>
         <div style="background: var(--bg-white); border-radius: 20px; padding: 36px 24px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border: 2px solid var(--line-light);">
           <div style="width: 60px; height: 60px; background: var(--primary-pale); border-radius: 50%; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 28px;">🎯</div>
-          <p class="number huge" style="font-size: 64px;">28<span class="unit" style="font-size: 24px;">歳</span></p>
+          <p class="number huge animate" style="font-size: 64px;">28<span class="unit" style="font-size: 24px;">歳</span></p>
           <p style="font-size: 15px; color: var(--text-light); margin-top: 8px;">平均年齢</p>
         </div>
       </div>
@@ -1673,30 +2014,30 @@ body {
       <p class="sub-title">Revenue Growth</p>
 
       <div class="animated-bar-chart" style="display: flex; align-items: flex-end; gap: 12px; margin-top: 30px;">
-        <div class="bar-item" style="text-align: center; flex: 1; ">
+        <div class="bar-item" style="text-align: center; flex: 1; animation: fadeInUp 0.6s ease-out 0.2s both;">
           <p style="font-family: var(--font-accent); font-size: 20px; font-weight: 700; color: var(--text-muted); margin-bottom: 10px;">30億</p>
-          <div class="bar-grow" style="height: 80px; background: linear-gradient(180deg, rgba(230, 126, 34, 0.3) 0%, rgba(211, 84, 0, 0.4) 100%); border-radius: 10px 10px 0 0;  transform-origin: bottom;"></div>
+          <div class="bar-grow" style="height: 80px; background: linear-gradient(180deg, rgba(230, 126, 34, 0.3) 0%, rgba(211, 84, 0, 0.4) 100%); border-radius: 10px 10px 0 0; animation: barGrow 1s ease-out 0.4s both; transform-origin: bottom;"></div>
           <p style="font-size: 15px; color: var(--text-light); margin-top: 12px;">2020</p>
         </div>
-        <div class="bar-item" style="text-align: center; flex: 1; ">
+        <div class="bar-item" style="text-align: center; flex: 1; animation: fadeInUp 0.6s ease-out 0.3s both;">
           <p style="font-family: var(--font-accent); font-size: 22px; font-weight: 700; color: var(--text-muted); margin-bottom: 10px;">50億</p>
-          <div class="bar-grow" style="height: 130px; background: linear-gradient(180deg, rgba(230, 126, 34, 0.4) 0%, rgba(211, 84, 0, 0.5) 100%); border-radius: 10px 10px 0 0;  transform-origin: bottom;"></div>
+          <div class="bar-grow" style="height: 130px; background: linear-gradient(180deg, rgba(230, 126, 34, 0.4) 0%, rgba(211, 84, 0, 0.5) 100%); border-radius: 10px 10px 0 0; animation: barGrow 1s ease-out 0.6s both; transform-origin: bottom;"></div>
           <p style="font-size: 15px; color: var(--text-light); margin-top: 12px;">2021</p>
         </div>
-        <div class="bar-item" style="text-align: center; flex: 1; ">
+        <div class="bar-item" style="text-align: center; flex: 1; animation: fadeInUp 0.6s ease-out 0.4s both;">
           <p style="font-family: var(--font-accent); font-size: 24px; font-weight: 700; color: var(--text-muted); margin-bottom: 10px;">80億</p>
-          <div class="bar-grow" style="height: 180px; background: linear-gradient(180deg, rgba(230, 126, 34, 0.5) 0%, rgba(211, 84, 0, 0.6) 100%); border-radius: 10px 10px 0 0;  transform-origin: bottom;"></div>
+          <div class="bar-grow" style="height: 180px; background: linear-gradient(180deg, rgba(230, 126, 34, 0.5) 0%, rgba(211, 84, 0, 0.6) 100%); border-radius: 10px 10px 0 0; animation: barGrow 1s ease-out 0.8s both; transform-origin: bottom;"></div>
           <p style="font-size: 15px; color: var(--text-light); margin-top: 12px;">2022</p>
         </div>
-        <div class="bar-item" style="text-align: center; flex: 1; ">
+        <div class="bar-item" style="text-align: center; flex: 1; animation: fadeInUp 0.6s ease-out 0.5s both;">
           <p style="font-family: var(--font-accent); font-size: 26px; font-weight: 700; color: var(--text-light); margin-bottom: 10px;">120億</p>
-          <div class="bar-grow" style="height: 250px; background: linear-gradient(180deg, rgba(230, 126, 34, 0.7) 0%, rgba(211, 84, 0, 0.8) 100%); border-radius: 10px 10px 0 0;  transform-origin: bottom;"></div>
+          <div class="bar-grow" style="height: 250px; background: linear-gradient(180deg, rgba(230, 126, 34, 0.7) 0%, rgba(211, 84, 0, 0.8) 100%); border-radius: 10px 10px 0 0; animation: barGrow 1s ease-out 1s both; transform-origin: bottom;"></div>
           <p style="font-size: 15px; color: var(--text-light); margin-top: 12px;">2023</p>
         </div>
-        <div class="bar-item highlight-bar-item" style="text-align: center; flex: 1.3; ">
-          <p style="font-family: var(--font-accent); font-size: 36px; font-weight: 900; color: var(--primary); margin-bottom: 10px; ">150億</p>
-          <div class="bar-grow" style="height: 320px; background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 12px 12px 0 0; box-shadow: 0 -10px 50px rgba(230, 126, 34, 0.4); position: relative;  transform-origin: bottom;">
-            <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; color: var(--primary); font-family: var(--font-accent); font-size: 18px; font-weight: 900; padding: 10px 20px; border-radius: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); ">5倍成長</span>
+        <div class="bar-item highlight-bar-item" style="text-align: center; flex: 1.3; animation: fadeInUp 0.6s ease-out 0.6s both;">
+          <p style="font-family: var(--font-accent); font-size: 36px; font-weight: 900; color: var(--primary); margin-bottom: 10px; animation: pulse 2s ease-in-out infinite 2s;">150億</p>
+          <div class="bar-grow" style="height: 320px; background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: 12px 12px 0 0; box-shadow: 0 -10px 50px rgba(230, 126, 34, 0.4); position: relative; animation: barGrow 1.2s ease-out 1.2s both, glowPulse 2s ease-in-out infinite 2.5s; transform-origin: bottom;">
+            <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; color: var(--primary); font-family: var(--font-accent); font-size: 18px; font-weight: 900; padding: 10px 20px; border-radius: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); animation: scaleIn 0.5s ease-out 2s both;">5倍成長</span>
           </div>
           <p style="font-size: 18px; font-weight: 700; color: var(--primary); margin-top: 12px;">2024</p>
         </div>
@@ -1727,15 +2068,15 @@ body {
 
       <div class="data-showcase" style="margin-top: 40px;">
         <div class="data-item">
-          <p class="number">500<span class="unit">+</span></p>
+          <p class="number animate">500<span class="unit">+</span></p>
           <p class="label">導入企業数</p>
         </div>
         <div class="data-item">
-          <p class="number">98<span class="unit">%</span></p>
+          <p class="number animate">98<span class="unit">%</span></p>
           <p class="label">継続率</p>
         </div>
         <div class="data-item">
-          <p class="number">4.8<span class="unit">/5</span></p>
+          <p class="number animate">4.8<span class="unit">/5</span></p>
           <p class="label">顧客評価</p>
         </div>
       </div>
@@ -2068,7 +2409,7 @@ body {
           <div class="stat-box">
             <h3 style="font-size: 17px; font-weight: 700; margin-bottom: 16px; color: var(--primary);">新卒初任給</h3>
             <div class="data-item">
-              <p class="number" style="font-size: 72px;">450<span class="unit">万円〜</span></p>
+              <p class="number animate" style="font-size: 72px;">450<span class="unit">万円〜</span></p>
               <p class="label">年収（大卒）</p>
             </div>
           </div>
@@ -2077,7 +2418,7 @@ body {
           <div class="stat-box dark">
             <h3 style="font-size: 17px; font-weight: 700; margin-bottom: 16px;">中途採用</h3>
             <div class="data-item">
-              <p class="number" style="font-size: 58px;">500-1200<span class="unit">万</span></p>
+              <p class="number animate" style="font-size: 58px;">500-1200<span class="unit">万</span></p>
               <p class="label">年収（経験による）</p>
             </div>
           </div>
@@ -2164,11 +2505,11 @@ body {
 
       <div class="data-showcase" style="margin-top: 32px;">
         <div class="data-item">
-          <p class="number">125<span class="unit">日</span></p>
+          <p class="number animate">125<span class="unit">日</span></p>
           <p class="label">年間休日</p>
         </div>
         <div class="data-item">
-          <p class="number">80<span class="unit">%</span></p>
+          <p class="number animate">80<span class="unit">%</span></p>
           <p class="label">有給消化率</p>
         </div>
       </div>
@@ -2411,6 +2752,450 @@ body {
   </div>
 
 </div>
+
+<script>
+// イージング関数
+const easings = {
+  easeOutQuart: t => 1 - Math.pow(1 - t, 4),
+  easeOutBounce: t => {
+    const n1 = 7.5625, d1 = 2.75;
+    if (t < 1 / d1) return n1 * t * t;
+    if (t < 2 / d1) return n1 * (t -= 1.5 / d1) * t + 0.75;
+    if (t < 2.5 / d1) return n1 * (t -= 2.25 / d1) * t + 0.9375;
+    return n1 * (t -= 2.625 / d1) * t + 0.984375;
+  },
+  easeOutBack: t => {
+    const c1 = 1.70158, c3 = c1 + 1;
+    return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
+  },
+  easeOutExpo: t => t === 1 ? 1 : 1 - Math.pow(2, -10 * t),
+  linear: t => t
+};
+
+// アニメーションスタイル - スライドごとに使い分け
+const numberAnimationStyles = [
+  { name: 'countUp', duration: 1500, effect: 'count' },      // シンプルなカウントアップ
+  { name: 'bounce', duration: 1800, effect: 'bounce' },      // バウンス
+  { name: 'slideUp', duration: 1200, effect: 'slideUp' }     // スライドアップ
+];
+
+// 数字のアニメーション
+function animateNumber(element, start, end, style, suffix = '') {
+  const { duration, effect } = style;
+  const isDecimal = String(end).includes('.');
+  let startTime = null;
+
+  // 元のカラーを保存
+  const originalColor = getComputedStyle(element).color;
+
+  // 初期スタイル設定
+  element.style.display = 'inline-block';
+  element.style.transition = 'none';
+
+  const step = (timestamp) => {
+    if (!startTime) startTime = timestamp;
+    const progress = Math.min((timestamp - startTime) / duration, 1);
+    const easedProgress = easings.easeOutQuart(progress);
+
+    let current;
+    if (isDecimal) {
+      current = (start + (end - start) * easedProgress).toFixed(1);
+    } else {
+      current = Math.floor(start + (end - start) * easedProgress);
+    }
+
+    // エフェクト別の処理
+    switch (effect) {
+      case 'flip3D':
+        // 3Dフリップ - カードが回転するように
+        const rotateY = (1 - progress) * 360;
+        const scaleFlip = 0.8 + progress * 0.2;
+        element.style.transform = `perspective(800px) rotateY(${rotateY}deg) scale(${scaleFlip})`;
+        element.style.opacity = progress < 0.5 ? 0.5 : 1;
+        element.innerHTML = current + suffix;
+        break;
+
+      case 'slideUp':
+        // 下からスライドアップ
+        const slideY = (1 - easedProgress) * 50;
+        const slideOpacity = easedProgress;
+        element.style.transform = `translateY(${slideY}px)`;
+        element.style.opacity = slideOpacity;
+        element.innerHTML = current + suffix;
+        break;
+
+      case 'bounce':
+        // バウンスしながら大きくなる
+        const bounceProgress = easings.easeOutBounce(progress);
+        const bounceScale = 0.3 + bounceProgress * 0.7;
+        element.style.transform = `scale(${bounceScale})`;
+        element.innerHTML = current + suffix;
+        break;
+
+      case 'glow':
+        // 光るエフェクト
+        const glowIntensity = Math.sin(progress * Math.PI * 3) * 20;
+        const hue = 30; // オレンジ系
+        element.style.textShadow = `0 0 ${10 + glowIntensity}px rgba(230, 126, 34, ${0.5 + progress * 0.3})`;
+        element.style.transform = `scale(${0.9 + progress * 0.1})`;
+        element.innerHTML = current + suffix;
+        break;
+
+      case 'typewriter':
+        // タイプライター風（1文字ずつ現れる）
+        const fullText = String(end) + suffix.replace(/<[^>]*>/g, ''); // HTMLタグを除去
+        const numDigits = String(end).length;
+        const currentDigits = Math.ceil(numDigits * progress);
+        const displayNum = String(end).substring(0, currentDigits);
+        // カーソル点滅
+        const cursor = progress < 1 ? (Math.floor(timestamp / 300) % 2 === 0 ? '|' : '') : '';
+        element.innerHTML = (displayNum || '0') + cursor + suffix;
+        break;
+
+      default: // count - シンプルなカウントアップ
+        element.innerHTML = current + suffix;
+        // 数字が変わるたびに軽くパルス
+        if (progress < 1 && Math.random() > 0.7) {
+          element.style.transform = 'scale(1.05)';
+          setTimeout(() => { element.style.transform = 'scale(1)'; }, 50);
+        }
+        break;
+    }
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else {
+      // アニメーション完了
+      element.innerHTML = (isDecimal ? end.toFixed(1) : end) + suffix;
+      element.style.transform = 'none';
+      element.style.opacity = '1';
+
+      // 完了エフェクト - タイプ別
+      switch (effect) {
+        case 'glow':
+          // 最後に強く光る
+          element.style.transition = 'text-shadow 0.3s ease-out, transform 0.2s ease-out';
+          element.style.textShadow = '0 0 30px rgba(230, 126, 34, 0.8)';
+          element.style.transform = 'scale(1.1)';
+          setTimeout(() => {
+            element.style.textShadow = 'none';
+            element.style.transform = 'scale(1)';
+          }, 300);
+          break;
+
+        case 'bounce':
+          // 最後に跳ねる
+          element.style.transition = 'transform 0.1s ease-out';
+          element.style.transform = 'scale(1.2)';
+          setTimeout(() => {
+            element.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+              element.style.transform = 'scale(1.05)';
+              setTimeout(() => {
+                element.style.transform = 'scale(1)';
+              }, 100);
+            }, 100);
+          }, 100);
+          break;
+
+        case 'flip3D':
+          // 最後にキラッと光る
+          element.style.transition = 'transform 0.2s ease-out';
+          element.style.transform = 'scale(1.1) rotateY(10deg)';
+          setTimeout(() => {
+            element.style.transform = 'scale(1) rotateY(0deg)';
+          }, 200);
+          break;
+
+        default:
+          // 標準のポップ
+          element.style.transition = 'transform 0.15s ease-out';
+          element.style.transform = 'scale(1.15)';
+          setTimeout(() => {
+            element.style.transform = 'scale(1)';
+          }, 150);
+      }
+    }
+  };
+  requestAnimationFrame(step);
+}
+
+// 範囲表記（例: 500-1200）用のアニメーション
+function animateRangeNumber(element, rangeStr, style, suffix = '') {
+  const { duration, effect } = style;
+  const [startVal, endVal] = rangeStr.split('-').map(Number);
+  let startTime = null;
+
+  element.style.display = 'inline-block';
+
+  const step = (timestamp) => {
+    if (!startTime) startTime = timestamp;
+    const progress = Math.min((timestamp - startTime) / duration, 1);
+    const easedProgress = easings.easeOutQuart(progress);
+
+    const currentStart = Math.floor(startVal * easedProgress);
+    const currentEnd = Math.floor(endVal * easedProgress);
+
+    // エフェクト別の処理
+    switch (effect) {
+      case 'flip3D':
+        const rotateY = (1 - progress) * 360;
+        element.style.transform = `perspective(800px) rotateY(${rotateY}deg)`;
+        element.style.opacity = progress < 0.5 ? 0.5 : 1;
+        break;
+      case 'slideUp':
+        const slideY = (1 - easedProgress) * 50;
+        element.style.transform = `translateY(${slideY}px)`;
+        element.style.opacity = easedProgress;
+        break;
+      case 'bounce':
+        const bounceScale = 0.3 + easings.easeOutBounce(progress) * 0.7;
+        element.style.transform = `scale(${bounceScale})`;
+        break;
+      case 'glow':
+        const glowIntensity = Math.sin(progress * Math.PI * 3) * 20;
+        element.style.textShadow = `0 0 ${10 + glowIntensity}px rgba(230, 126, 34, ${0.5 + progress * 0.3})`;
+        break;
+    }
+
+    element.innerHTML = currentStart + '-' + currentEnd + suffix;
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else {
+      element.innerHTML = startVal + '-' + endVal + suffix;
+      element.style.transform = 'none';
+      element.style.opacity = '1';
+      element.style.textShadow = 'none';
+      // 完了時のポップエフェクト
+      element.style.transition = 'transform 0.15s ease-out';
+      element.style.transform = 'scale(1.1)';
+      setTimeout(() => {
+        element.style.transform = 'scale(1)';
+      }, 150);
+    }
+  };
+  requestAnimationFrame(step);
+}
+
+// Intersection Observerでスクロール時にアニメーション発火
+const observerOptions = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.2
+};
+
+const animatedElements = new Set();
+let globalStyleIndex = 0;
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !animatedElements.has(entry.target)) {
+      animatedElements.add(entry.target);
+
+      // アニメーション対象は .number.animate クラスを持つ要素のみ
+      const numbers = entry.target.querySelectorAll('.number.animate');
+
+      // スライドごとに1つのアニメーションスタイルを使用
+      const slideStyle = numberAnimationStyles[globalStyleIndex % numberAnimationStyles.length];
+
+      numbers.forEach((num, index) => {
+        const html = num.innerHTML;
+        // 数字部分を抽出（先頭の数字、ハイフン区切りの範囲も対応）
+        const match = html.match(/^(\d+(?:\.\d+)?(?:-\d+)?)/);
+        if (match) {
+          const valueStr = match[1];
+          const rest = html.substring(match[1].length);
+
+          // 範囲表記（例: 500-1200）の場合は最後の数字を使用
+          let value;
+          if (valueStr.includes('-')) {
+            const parts = valueStr.split('-');
+            value = parseFloat(parts[parts.length - 1]);
+          } else {
+            value = parseFloat(valueStr);
+          }
+
+          // 開始前の準備
+          num.style.opacity = '0.3';
+          if (valueStr.includes('-')) {
+            num.innerHTML = '0-0' + rest;
+          } else {
+            num.innerHTML = '0' + rest;
+          }
+
+          setTimeout(() => {
+            num.style.opacity = '1';
+            if (valueStr.includes('-')) {
+              // 範囲表記の場合は特別処理
+              animateRangeNumber(num, valueStr, slideStyle, rest);
+            } else {
+              // 同じスライド内の数字は同じアニメーション
+              animateNumber(num, 0, value, slideStyle, rest);
+            }
+          }, 150 + (index * 150)); // スタッガード遅延
+        }
+      });
+
+      // アニメーション対象がある場合のみインデックスを進める
+      if (numbers.length > 0) {
+        globalStyleIndex++;
+      }
+      entry.target.classList.add('animate-in');
+    }
+  });
+}, observerOptions);
+
+// すべてのスライドを監視
+document.querySelectorAll('.slide').forEach(slide => {
+  observer.observe(slide);
+});
+
+// パーティクル背景（表紙・エンディング用）
+function createParticles(container, count = 20) {
+  for (let i = 0; i < count; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'floating-particle';
+    const size = Math.random() * 8 + 4;
+    particle.style.cssText = `
+      position: absolute;
+      width: ${size}px;
+      height: ${size}px;
+      background: rgba(255, 255, 255, ${Math.random() * 0.2 + 0.1});
+      border-radius: 50%;
+      left: ${Math.random() * 100}%;
+      top: ${Math.random() * 100}%;
+      animation: floatParticle ${Math.random() * 8 + 12}s ease-in-out infinite;
+      animation-delay: ${Math.random() * 5}s;
+      pointer-events: none;
+      z-index: 1;
+    `;
+    container.appendChild(particle);
+  }
+}
+
+// 表紙とエンディングにパーティクル追加
+document.querySelectorAll('.cover-slide, .ending-slide').forEach(slide => {
+  createParticles(slide, 12);
+});
+
+// 全スライドに輪の装飾を追加（表紙とエンディング以外）
+document.querySelectorAll('.slide:not(.cover-slide):not(.ending-slide)').forEach(slide => {
+  const decorLarge = document.createElement('div');
+  decorLarge.className = 'slide-decoration large';
+  slide.insertBefore(decorLarge, slide.firstChild);
+
+  const decorSmall = document.createElement('div');
+  decorSmall.className = 'slide-decoration small';
+  slide.insertBefore(decorSmall, slide.firstChild);
+});
+
+// マウス追従エフェクト（カード用）- 軽量版
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    card.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+  });
+
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 30;
+    const rotateY = (centerX - x) / 30;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+  });
+});
+
+// スムーズスクロール
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// リップルエフェクト（クリック時）
+function createRipple(event) {
+  const element = event.currentTarget;
+
+  // 既存のリップルを削除
+  const existingRipple = element.querySelector('.ripple-effect');
+  if (existingRipple) existingRipple.remove();
+
+  const ripple = document.createElement('span');
+  ripple.className = 'ripple-effect';
+  const rect = element.getBoundingClientRect();
+  const size = Math.max(rect.width, rect.height);
+  const x = event.clientX - rect.left - size / 2;
+  const y = event.clientY - rect.top - size / 2;
+
+  ripple.style.cssText = `
+    position: absolute;
+    width: ${size}px;
+    height: ${size}px;
+    left: ${x}px;
+    top: ${y}px;
+    background: rgba(230, 126, 34, 0.25);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 0.6s ease-out;
+    pointer-events: none;
+    z-index: 100;
+  `;
+
+  element.appendChild(ripple);
+  setTimeout(() => ripple.remove(), 600);
+}
+
+document.querySelectorAll('.card, .flow-item, .stat-box, .client-logo').forEach(el => {
+  el.style.position = 'relative';
+  el.style.overflow = 'hidden';
+  el.addEventListener('click', createRipple);
+});
+
+// CSS追加（パーティクルアニメーション）
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes floatParticle {
+    0%, 100% {
+      transform: translate(0, 0);
+      opacity: 0.2;
+    }
+    25% {
+      transform: translate(20px, -40px);
+      opacity: 0.4;
+    }
+    50% {
+      transform: translate(-15px, -60px);
+      opacity: 0.2;
+    }
+    75% {
+      transform: translate(25px, -30px);
+      opacity: 0.35;
+    }
+  }
+
+  @keyframes ripple {
+    to {
+      transform: scale(2.5);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(style);
+
+console.log('🎬 アニメーション初期化完了');
+</script>
 
 </body>
 </html>
